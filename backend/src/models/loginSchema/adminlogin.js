@@ -40,7 +40,7 @@ adminloginSchema.methods.generateAuthToken = async function () {
   try {
     const token = await jwt.sign(
       { _id: this._id.toString() },
-      "codeclubmernwebsitesecretkeyprivate"
+      process.env.SECRET_KEY
     );
     this.tokens = this.tokens.concat({ token });
     await this.save();

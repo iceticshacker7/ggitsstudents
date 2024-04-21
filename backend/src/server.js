@@ -5,7 +5,7 @@ const path = require("path");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
-const port = process.nextTick.PORT || 5000;
+const port = process.env.PORT || 5000;
 const registerAdmin = require("./models/loginSchema/adminlogin");
 const auth = require("./middleware/auth");
 require("./db/Connection");

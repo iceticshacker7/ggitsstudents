@@ -1,6 +1,7 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const pass = process.env.PASSWORD;
-const uri = `mongodb+srv://arpitkoshta5:Xe6UGLYqQMrgHKvU@cluster0.gklvy7b.mongodb.net/CodeClubs?retryWrites=true&w=majority`;
+const uri = process.env.URI;
 
 mongoose
   .connect(uri)
