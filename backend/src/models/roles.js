@@ -4,25 +4,22 @@ const validator = require("validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const adminloginSchema = mongoose.Schema({
+const roleSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
   },
-
+  role: {
+    type: String,
+    required: true,
+  },
   password: {
     type: String,
     required: true,
   },
-
   confirmpassword: {
     type: String,
     required: true,
-  },
-
-  role: {
-    type: String,
-    default: "Admin",
   },
 
   tokens: [
@@ -35,8 +32,8 @@ const adminloginSchema = mongoose.Schema({
   ],
 });
 
-//GENERATING AUTH TOEKN
-adminloginSchema.methods.generateAuthToken = async function () {
+//GENERATING AUTH TOKEN
+roleSchema.methods.generateAuthToken = async function () {
   try {
     const token = await jwt.sign(
       { _id: this._id.toString() },
@@ -51,15 +48,15 @@ adminloginSchema.methods.generateAuthToken = async function () {
   }
 };
 
-// PASSWORD HASHING
-adminloginSchema.pre("save", async function (next) {
+//PASSWORD HASHING
+roleSchema.pre("save", async function (next) {
   if (this.password && this.isModified("password")) {
-    this.password = await bcrypt.hash(this.password, 10);
-    this.confirmpassword = await bcrypt.hash(this.confirmpassword, 10);
+    this.password = await bcrypt.hashSync(this.password, 10);
+    this.confirmpassword = await bcrypt.hashSync(this.confirmpassword, 10);
   }
 
   next();
 });
 
-const registerAdmin = new mongoose.model("admin", adminloginSchema);
-module.exports = registerAdmin;
+const roleRegister = new mongoose.model("role", roleSchema);
+module.exports = roleRegister;
