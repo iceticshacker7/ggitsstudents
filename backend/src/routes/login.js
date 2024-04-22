@@ -25,29 +25,28 @@ router.post("/", async (req, res) => {
         expires: new Date(Date.now() + 3000000),
         httpOnly: true,
       });
-      res.send("Login successfull");
+      res.status(200).send(userCred);
     } else {
-      res.send("password not matched");
+      res.status(401).send("password not matched");
     }
   } catch (error) {
-    res.send("Invalid cred");
-    console.log(error);
+    res.status(401).send("Invalid cred");
   }
 });
 
 router.get("/logout", auth, async (req, res) => {
   try {
+    console.log("dkfsa");
     const token = req.cookies.jwt;
     if (token) {
       req.user.tokens = [];
       res.clearCookie("jwt");
       await req.user.save();
-      console.log("logout successfull");
-      res.send("logout successfull");
+      res.status(200).send("logout successfull");
     }
   } catch (error) {
-    console.log(error);
-    console.log("error logging out");
+    console.log("user not logged in");
+    res.status(401).send("User not logged in.");
   }
 });
 

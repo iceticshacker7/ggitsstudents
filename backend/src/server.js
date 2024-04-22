@@ -4,9 +4,19 @@ const app = express();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const port = process.env.PORT || 5000;
 const auth = require("./middleware/auth");
 require("./db/Connection");
+
+const corsOptionss = {
+  origin: "http://localhost:5173",
+  methods: "GET, POST, PUT, DELETE, HEAD",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptionss));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));

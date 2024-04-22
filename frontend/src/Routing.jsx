@@ -50,14 +50,4 @@ const appRouter = createBrowserRouter([
     },
   ]);
 
-  import React from 'react'
-  
-  const App = () => {
-    return (
-      <>
-      <RouterProvider router={appRouter} /> 
-      </>
-    )
-  }
-  
-  export default App
+  export default appRouter
