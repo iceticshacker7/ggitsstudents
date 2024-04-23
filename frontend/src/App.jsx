@@ -14,11 +14,13 @@ import Logout from './components/Logout';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import axios from "axios"
-
+import Header from './components/Header';
+import MainBody from './components/MainBody';
+import PerModal from "./components/PerModal";
 const appRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Body/>
+      element: <MainBody/>
     },
     {
       path: "/leaderboard",
@@ -55,7 +57,10 @@ const appRouter = createBrowserRouter([
   const App = () => {
     return (
       <>
+      <PerModal/>
+      <Header/>
       <RouterProvider router={appRouter} /> 
+      <Footer/>
       </>
     )
   }
