@@ -1,40 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
-import axios from "axios"
-import Navbar from './Navbar';
+import React, { useState, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Navbar from "./Navbar";
+import getUserData from "../utils/getUserData";
 
 const Leaderboard = () => {
-
-    const [user, setUser] = useState("");
-  const Navigate = useNavigate()
-  const api = axios.create({
-    withCredentials: true,
-    headers: {
-        "Content-type": "application/json",
-    },
-});
-  const getUserData = async () => {
-        try {
-            const data = await api.get("http://localhost:5000/login")
-            if(data.data.role=="admin" || data.data.role == "leaderboard"){
-              setUser(data.data.role)
-            }
-            return
-        } catch (error) {
-            return
-        }
-      }
-
-  useEffect(()=>{
-    getUserData();
-  }, [])
+  const user = getUserData();
 
   return (
-<>
-<Navbar/>
-{user=="admin" || user=="leaderboard" ? <h1>leaderboard page for {user} role </h1> : <h1>leaderboard page</h1>}
-</>
-  )
-}
+    <>
+      <Navbar />
+      {user.role == "admin" || user.role == "leaderboard" ? (
+        <h1>leaderboard page for {user.role} role </h1>
+      ) : (
+        <h1>leaderboard page</h1>
+      )}
+    </>
+  );
+};
 
-export default Leaderboard
+export default Leaderboard;

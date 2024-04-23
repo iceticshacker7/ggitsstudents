@@ -76,7 +76,7 @@ router.delete("/:id", auth, async (req, res) => {
         return;
       }
       const result = await addNews.findOneAndDelete({ _id: newsid });
-      res.send(result);
+      res.status(200).send(result);
       console.log("resource Delete successfully!");
     } catch (error) {
       console.log(error);
