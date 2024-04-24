@@ -28,7 +28,7 @@ const News = () => {
                 </div>
               </Link>
             ) : (
-              <Button></Button>
+             null
             )}
             <div className="space-y-2 ">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center">

@@ -25,13 +25,13 @@ function MainBody() {
         <div className="mx-auto max-w-6xl px-4" data-id="22">
           <div className="space-y-6" data-id="23">
             {user.role == "admin" || user.role == "leaderboard" ? (
-              <div className="flex justify-end  mb-16 mr-64 mb-4">
+              <div className="flex justify-end  mb-4 mr-64">
                 <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                   New Person
                 </button>
               </div>
             ) : (
-              <Button></Button>
+              null
             )}
             <div className="space-y-2 text-center" data-id="24">
               <h1
