@@ -27,7 +27,7 @@ function MainBody() {
             {user.role == "admin" || user.role == "leaderboard" ? (
               <div className="flex justify-end  mb-16 mr-64 mb-4">
                 <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                  New Leaderboard
+                  New Person
                 </button>
               </div>
             ) : (
