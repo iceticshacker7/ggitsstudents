@@ -10,7 +10,7 @@ const auth = async (req, res, next) => {
       const user = await addRole.findOne({ _id: verifyUser._id });
       req.token = token;
       req.user = user;
-      console.log("user verified");
+      console.log("user verified ");
       next();
     } else {
       console.log("user not verified");

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
+import Header from "./Header";
 
 const Admin = () => {
   const [user, setUser] = useState("");
@@ -34,7 +35,7 @@ const Admin = () => {
   }, []);
   return (
     <>
-      <Navbar />
+      <Header />
       <div>Admin</div>
     </>
   );

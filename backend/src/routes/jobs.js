@@ -23,7 +23,7 @@ router.post("/", auth, async (req, res) => {
 
       const registered = await newJobs.save();
 
-      res.sendStatus(200);
+      res.status(200).send("Job posted successfully");
       console.log("jobs uploaded successfully");
     } catch (error) {
       res.send("Error while uploading jobs");
@@ -56,7 +56,7 @@ router.put("/:id", auth, async (req, res) => {
         }
       );
       console.log("update successful");
-      res.send(result);
+      res.status(200).send(result);
     } catch (error) {
       response.send("error while updating the data");
     }
@@ -71,12 +71,12 @@ router.delete("/:id", auth, async (req, res) => {
       const jobid = req.params.id;
       const isExist = await addJobs.findOne({ _id: jobid });
       if (!isExist) {
-        res.send("resource not found");
+        res.send("job not found");
         return;
       }
       const result = await addJobs.findOneAndDelete({ _id: jobid });
       res.send(result);
-      console.log("resource Delete successfully!");
+      console.log("job Delete successfully!");
     } catch (error) {
       console.log(error);
     }

@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
@@ -15,47 +14,81 @@ import Logout from "./components/Logout";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import axios from "axios";
-import NewNews from "./components/sidecomponents/NewNews";
-import ViewNews from "./components/sidecomponents/ViewNews";
-import EditNews from "./components/sidecomponents/EditNews";
-import DeleteNews from "./components/sidecomponents/DeleteNews";
-
+import Header from "./components/Header";
+import MainBody from "./components/MainBody";
+import React from "react";
+import CoreTeam from "./components/CoreTeam";
+import PerModal from "./components/PerModal";
+import NewsPost from "./components/sidecomponents/news/NewsPost";
+import NewsDelete from "./components/sidecomponents/news/NewsDelete";
+import NewsEdit from "./components/sidecomponents/news/NewsEdit";
+import JobsPost from "./components/sidecomponents/jobs/JobsPost";
+import JobsDelete from "./components/sidecomponents/jobs/JobsDelete";
+import JobsEdit from "./components/sidecomponents/jobs/JobsEdit";
+import Home from "./components/Home";
+import ResourcesPost from "./components/sidecomponents/resources/ResourcesPost";
+import ResourcesEdit from "./components/sidecomponents/resources/ResourcesEdit";
+import ResourcesDelete from "./components/sidecomponents/resources/ResroucesDelete";
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Body />,
+    element: <MainBody />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
   },
   {
     path: "/leaderboard",
-    element: <Leaderboard />,
+    element: <MainBody />,
   },
   {
     path: "/news",
     element: <News />,
   },
   {
-    path: "/news/:newsid",
-    element: <ViewNews />,
-  },
-  {
     path: "/newspost",
-    element: <NewNews />,
+    element: <NewsPost />,
   },
   {
     path: "/newsedit/:newsid",
-    element: <EditNews />,
+    element: <NewsEdit />,
   },
   {
     path: "/newsdelete/:newsid",
-    element: <DeleteNews />,
+    element: <NewsDelete />,
   },
   {
     path: "/jobs",
     element: <Jobs />,
   },
   {
+    path: "/jobspost",
+    element: <JobsPost />,
+  },
+  {
+    path: "/jobsedit/:jobid",
+    element: <JobsEdit />,
+  },
+  {
+    path: "/jobsdelete/:jobid",
+    element: <JobsDelete />,
+  },
+  {
     path: "/resources",
     element: <Resources />,
+  },
+  {
+    path: "/resourcespost",
+    element: <ResourcesPost />,
+  },
+  {
+    path: "/resourcesdelete/:resourceid",
+    element: <ResourcesDelete />,
+  },
+  {
+    path: "/resourcesedit/:resourceid",
+    element: <ResourcesEdit />,
   },
   {
     path: "/hiddenlogin",
@@ -70,15 +103,17 @@ const appRouter = createBrowserRouter([
     element: <Logout />,
   },
   {
-    path: "/footer",
-    element: <Footer />,
+    path: "/coreteam",
+    element: <CoreTeam />,
   },
 ]);
 
 const App = () => {
   return (
     <>
+      {/* <PerModal /> */}
       <RouterProvider router={appRouter} />
+      <Footer />
     </>
   );
 };

@@ -1,60 +1,71 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
 import getUserData from "../utils/getUserData";
 import getResources from "../utils/getResources";
 import { Button } from "@chakra-ui/react";
 import Card from "./helper/Cards";
+import Header from "./Header";
+import ResourcesCard from "./helper/ResourcesCard";
 const Resources = () => {
   const user = getUserData();
   const resources = getResources();
 
   return (
     <>
-      <Navbar />
-      <div className="flex px-1 h-10  w-full justify-end">
-        {user.role == "admin" || user.role == "resources" ? (
-          <Button className="bg-green-100 text-md font-bold rounded-lg border border-black round-lg p-3 ">
-            New Resource
-          </Button>
-        ) : (
-          <Button></Button>
-        )}
-      </div>
-      {resources.map((resource) => {
-        return (
-          <div key={resource._id}>
-            <Card
-              title={resource.title}
-              descrition={resource.description}
-              tag={resource.tag}
-              link={resource.link}
-            />
-            <div className="flex justify-end p-0 m-0">
-              {user.role == "admin" || user.role == "resources" ? (
-                <Button className="bg-blue-300 border border-black rounded-lg w-20 font-bold mx-3 p-1 my-1">
-                  Edit
-                </Button>
-              ) : (
-                <Button></Button>
-              )}
-              {user.role == "admin" || user.role == "resources" ? (
-                <Button className="bg-red-300 border border-black rounded-lg w-20 font-bold mx-3 p-1 my-1 right-0">
-                  Delete
-                </Button>
-              ) : (
-                <Button></Button>
-              )}
+      <Header />
+      <div className="container bg-gray-100 py-6 md:py-10 lg:py-14">
+        <div className="mx-auto max-w-[76rem]">
+          <div className="space-y-6">
+            {user.role == "admin" || user.role == "resource" ? (
+              <Link to="/resourcespost">
+                <div className="flex justify-end mb-4">
+                  <Button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2  px-4 rounded ml-auto">
+                    New Resource
+                  </Button>
+                </div>
+              </Link>
+            ) : (
+              <Button></Button>
+            )}
+            <div className="space-y-2 text-center">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                BEST RESOURCES TO LEARN
+              </h1>
+              <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                Get yourself equipped with latest technologies in the industry.
+              </p>
+              {resources.map((resource, index) => (
+                <div key={index} className="flex flex-col ">
+                  <div className="w-full">
+                    <ResourcesCard
+                      title={resource.title}
+                      description={resource.description}
+                      tag={resource.tag}
+                      link={resource.link}
+                    />
+                  </div>
+                  {user.role === "admin" || user.role === "resources" ? (
+                    <div className="flex mt-2 ml-auto">
+                      <Link to={"/resourcesedit/" + resource._id}>
+                        <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                          Edit
+                        </Button>
+                      </Link>
+                      <Link to={"/resourcesdelete/" + resource._id}>
+                        <Button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">
+                          Delete
+                        </Button>
+                      </Link>
+                    </div>
+                  ) : null}
+                </div>
+              ))}
             </div>
           </div>
-        );
-      })}
-      {user.role == "admin" || user.role == "resources" ? (
-        <h1>resources page for {user.role} role </h1>
-      ) : (
-        <h1>resources page</h1>
-      )}
+        </div>
+      </div>
     </>
   );
 };

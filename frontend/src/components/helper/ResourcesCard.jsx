@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-const NewsCard = ({ title, description, tag, link }) => {
+const ResourcesCard = ({ title, description, tag, link }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-
   const toggleExpansion = () => {
     setIsExpanded(!isExpanded);
   };
@@ -16,12 +15,8 @@ const NewsCard = ({ title, description, tag, link }) => {
         <div className="grid gap-1 ml-4">
           <div className="flex items-center gap-2">
             <hgroup className="grid gap-1">
-              <h3 className="text-base font-bold text-lg leading-none">
-                {title}
-              </h3>
-              <h4 className="text-xs tracking-wide font-semibold opacity-70">
-                {tag}
-              </h4>
+              <h3 className="text-base font-bold leading-none">{title}</h3>
+              <h4 className="text-xs tracking-wide opacity-70">{tag}</h4>
             </hgroup>
           </div>
           <p className="text-sm leading-relaxed">{description}</p>
@@ -71,4 +66,4 @@ const NewsCard = ({ title, description, tag, link }) => {
   );
 };
 
-export default NewsCard;
+export default ResourcesCard;

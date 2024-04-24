@@ -1,26 +1,66 @@
-import { Card, CardBody, CardHeader, Heading, Stack } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
-const JobCard = ({ title, descrition, eligibility, tag, link }) => {
+const JobComponent = ({
+  title,
+  description,
+  tag,
+  eligibility,
+  Batch,
+  link,
+}) => {
   return (
-    <div className="card bg-slate-100 rounded-lg shadow-md  border border-black flex flex-col justify-start align-top p-0 h-1/3 mt-8">
-      <h1 className=" w-1/2 flex right-5 text-wrap font-bold text-lg p-5 my-1">
-        {title}
-      </h1>
-      <h3 className=" w-2/3 flex right-5 text-wrap font-semibold bg-red text-lg p-5 my-1">
-        {descrition}
-      </h3>
-      <h3 className=" w-2/3 flex right-5 text-wrap font-semibold bg-red text-lg p-5 my-1">
-        {eligibility}
-      </h3>
-      <h4 className=" w-2/3 flex right-5 text-wrap font-serif text-lg p-5 my-1">
-        {link}
-      </h4>
-      <h3 className=" w-2/3 flex right-5 text-wrap font-serif text-lg p-5 my-1">
-        {tag}
-      </h3>
+    <div className="flex justify-center items-center my-3">
+      <div
+        className="rounded-lg shadow-lg bg-white border bg-card text-card-foreground shadow-sm w-full max-w-lg"
+        data-v0-t="card"
+      >
+        <div className="p-6">
+          <h2 className="text-2xl font-bold leading-tight">{title}</h2>
+          <div className="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 mt-2">
+            Batch: {Batch}
+          </div>
+          <div className="mt-4">
+            <h3 className="font-semibold text-lg">
+              Eligibility: {eligibility}
+            </h3>
+            <div className="flex flex-wrap gap-2 mt-2">
+              <div className="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80">
+                {tag}
+              </div>
+              {/* Add more skillset divs as needed */}
+            </div>
+          </div>
+          <div className="mt-4">
+            <h3 className="font-semibold text-lg">{description}</h3>
+            <p className="mt-2"></p>
+          </div>
+
+          <div className="flex justify-between items-center mt-6">
+            <Link to={link}>
+              <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2">
+                Apply Now
+              </button>
+            </Link>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6 text-green-500"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default JobCard;
+export default JobComponent;
