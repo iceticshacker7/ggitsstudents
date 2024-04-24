@@ -16,7 +16,7 @@ const News = () => {
   return (
     <>
       <Header />
-      <div className="container bg-gray-100 py-6 md:py-10 lg:py-14">
+      <div className="container bg-gray-100 py-6 h-full flex md:py-10 lg:py-14">
         <div className="mx-auto max-w-[76rem]">
           <div className="space-y-6">
             {user.role == "admin" || user.role == "news" ? (
@@ -30,11 +30,11 @@ const News = () => {
             ) : (
               <Button></Button>
             )}
-            <div className="space-y-2 text-center">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            <div className="space-y-2 ">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center">
                 TECH NEWS AND UPDATES
               </h1>
-              <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+              <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed text-center lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
                 Stay connected to the latest news in the industry.
               </p>
               {news.map((newsItem, index) => (

@@ -15,7 +15,7 @@ const Resources = () => {
   return (
     <>
       <Header />
-      <div className="container bg-gray-100 py-6 md:py-10 lg:py-14">
+      <div className="container bg-gray-100 flex justify-center h-full py-6 md:py-10 lg:py-14">
         <div className="mx-auto max-w-[76rem]">
           <div className="space-y-6">
             {user.role == "admin" || user.role == "resource" ? (
@@ -29,16 +29,16 @@ const Resources = () => {
             ) : (
               <Button></Button>
             )}
-            <div className="space-y-2 text-center">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            <div className="space-y-2 ">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl text-center md:text-5xl">
                 BEST RESOURCES TO LEARN
               </h1>
-              <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+              <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed text-center lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
                 Get yourself equipped with latest technologies in the industry.
               </p>
               {resources.map((resource, index) => (
                 <div key={index} className="flex flex-col ">
-                  <div className="w-full">
+                  <div className="w-full ">
                     <ResourcesCard
                       title={resource.title}
                       description={resource.description}

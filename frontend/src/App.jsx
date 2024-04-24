@@ -111,7 +111,7 @@ const appRouter = createBrowserRouter([
 const App = () => {
   return (
     <>
-      {/* <PerModal /> */}
+      <PerModal />
       <RouterProvider router={appRouter} />
       <Footer />
     </>

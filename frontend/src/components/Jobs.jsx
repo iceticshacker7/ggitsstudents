@@ -13,7 +13,7 @@ const Jobs = () => {
   return (
     <>
       <Header />
-      <div className="container bg-gray-100 py-6 md:py-10 lg:py-14">
+      <div className="container h-full bg-gray-100 py-6 md:py-10 lg:py-14">
         <div className="mx-auto max-w-5xl px-4">
           <div className="space-y-6">
             {user.role === "admin" || user.role === "jobs" ? (
@@ -25,11 +25,11 @@ const Jobs = () => {
                 </div>
               </Link>
             ) : null}
-            <div className="space-y-2 text-center">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            <div className="space-y-2 ">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center">
                 JOBS AND INTERNSHIPS
               </h1>
-              <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+              <p className="mx-auto max-w-[600px] text-center text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
                 Get the latest jobs & internship with easy apply link.
               </p>
               {jobs.map((job, index) => (

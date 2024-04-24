@@ -12,7 +12,7 @@ const JobComponent = ({
   return (
     <div className="flex justify-center items-center my-3">
       <div
-        className="rounded-lg shadow-lg bg-white border bg-card text-card-foreground shadow-sm w-full max-w-lg"
+        className="rounded-lg shadow-lg bg-white border bg-card text-card-foreground  w-full max-w-lg"
         data-v0-t="card"
       >
         <div className="p-6">
@@ -22,7 +22,7 @@ const JobComponent = ({
           </div>
           <div className="mt-4">
             <h3 className="font-semibold text-lg">
-              Eligibility: {eligibility}
+              Skillset Required
             </h3>
             <div className="flex flex-wrap gap-2 mt-2">
               <div className="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80">
@@ -32,8 +32,10 @@ const JobComponent = ({
             </div>
           </div>
           <div className="mt-4">
-            <h3 className="font-semibold text-lg">{description}</h3>
-            <p className="mt-2"></p>
+            <h3 className="font-semibold text-lg">Description</h3>
+            <p className="mt-2">
+              {description}
+            </p>
           </div>
 
           <div className="flex justify-between items-center mt-6">
