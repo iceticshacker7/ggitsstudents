@@ -37,6 +37,17 @@ app.use("/news", newsRouter);
 app.use("/login", loginRouter);
 // app.use("/leaderboard", leaderboardRouter);
 
+const { send } = require('micro');
+const microCors = require('micro-cors');
+const microApp = express();
+const cors = microCors({ allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'] });
+
+microApp.get('/api/data', (req, res) => {
+  res.json({ message: 'Hello from Express!' });
+});
+
+module.exports = cors(microApp);
+
 const getHandlesAndSendResponse = async (res) => {
   try {
     const handles = await getHandlesFromMongo();
