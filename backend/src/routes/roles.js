@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 router.get("/", auth, async (req, res) => {
   if (req.user.role == "admin") {
     const result = await roleRegister.find();
-    res.send(result);
+    res.status(200).send(result);
   } else {
     res.status(401).send({ data: "permission denied" });
   }
@@ -38,15 +38,15 @@ router.post("/", auth, async (req, res) => {
           return;
         }
 
-        const token = await newRole.generateAuthToken();
+        // const token = await newRole.generateAuthToken();
 
-        res.cookie("jwt", token, {
-          expires: new Date(Date.now() + 3000000),
-          httpOnly: true,
-        });
+        // res.cookie("jwt", token, {
+        //   expires: new Date(Date.now() + 3000000),
+        //   httpOnly: true,
+        // });
         const registered = await newRole.save();
 
-        res.sendStatus(200);
+        res.status(200).send("user created successfully");
         console.log("admin registered successful");
       } else {
         res.send("Password does not match");
@@ -61,6 +61,10 @@ router.post("/", auth, async (req, res) => {
 
 //UPDATE USER INFORMATION
 router.put("/:id", auth, async (req, res) => {
+  (password = req.body.password), (confirmpassword = req.body.confirmpassword);
+  if (password != confirmpassword) {
+    res.status(400).send({ data: "password not matched" });
+  }
   if (req.user.role == "admin") {
     try {
       const userid = req.params.id;
@@ -73,13 +77,14 @@ router.put("/:id", auth, async (req, res) => {
         {
           $set: {
             username: req.body.username,
+            role: req.body.role,
             password: req.body.password,
-            confirmpassword: req.body.password,
+            confirmpassword: req.body.confirmpassword,
           },
         }
       );
       console.log("update successful");
-      res.send(result);
+      res.status(200).send(result);
     } catch (error) {
       res.send("error while updating the data");
       console.log(error);
@@ -100,7 +105,7 @@ router.delete("/:id", auth, async (req, res) => {
         return;
       }
       const result = await roleRegister.findOneAndDelete({ _id: userid });
-      res.send(result);
+      res.status(200).send(result);
       console.log("User Delete successfully!");
     } catch (error) {
       console.log(error);

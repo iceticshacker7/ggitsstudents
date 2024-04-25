@@ -47,7 +47,7 @@ const ResourcesEdit = () => {
   useEffect(() => {
     getUserData();
     getFilteredData();
-  });
+  }, []);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -96,7 +96,8 @@ const ResourcesEdit = () => {
           />
         </div>
         <div className="mb-5">
-          <input
+          <textarea
+            rows={5}
             type="text"
             name="description"
             id="desciption"

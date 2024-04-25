@@ -79,7 +79,8 @@ const NewsPost = () => {
           />
         </div>
         <div className="mb-5">
-          <input
+          <textarea
+            rows={5}
             type="text"
             name="description"
             id="desciption"

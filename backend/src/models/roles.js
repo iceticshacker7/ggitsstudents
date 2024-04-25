@@ -50,9 +50,10 @@ roleSchema.methods.generateAuthToken = async function () {
 
 //PASSWORD HASHING
 roleSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
   if (this.password && this.isModified("password")) {
-    this.password = await bcrypt.hashSync(this.password, 10);
-    this.confirmpassword = await bcrypt.hashSync(this.confirmpassword, 10);
+    this.password = await bcrypt.hash(this.password, 10);
+    this.confirmpassword = await bcrypt.hash(this.confirmpassword, 10);
   }
 
   next();

@@ -46,7 +46,7 @@ const JobsEdit = () => {
   useEffect(() => {
     getUserData();
     getFilteredData();
-  });
+  }, []);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -97,7 +97,8 @@ const JobsEdit = () => {
           />
         </div>
         <div className="mb-5">
-          <input
+          <textarea
+            rows={5}
             type="text"
             name="description"
             id="desciption"
