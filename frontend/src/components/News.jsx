@@ -27,9 +27,7 @@ const News = () => {
                   </Button>
                 </div>
               </Link>
-            ) : (
-             null
-            )}
+            ) : null}
             <div className="space-y-2 ">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center">
                 TECH NEWS AND UPDATES
@@ -45,15 +43,13 @@ const News = () => {
                       description={newsItem.description}
                       tag={newsItem.tag}
                       link={newsItem.link}
+                      moredescription={newsItem.moredescription}
                     />
                   </div>
                   {user.role === "admin" || user.role === "news" ? (
                     <div className="flex mt-2 ml-auto">
                       <Link to={"/newsedit/" + newsItem._id}>
-                        <Button
-                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                          onClick={() => handleEditNews(index)}
-                        >
+                        <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                           Edit
                         </Button>
                       </Link>

@@ -40,7 +40,6 @@ const Jobs = () => {
                     tag={job.tag}
                     link={job.link}
                     eligibility={job.eligibility}
-                    Batch={job.Batch}
                   />
                   {user.role === "admin" || user.role === "jobs" ? (
                     <div className="flex justify-end mt-2  w-3/4">

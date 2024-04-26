@@ -10,7 +10,7 @@ const ShimmerUI = () => {
             {Array.from({ length: 50 }, (_, index) => (
               <div
                 key={index}
-                className="rounded-lg shadow-lg bg-white w-[40vw] flex justify-center border bg-card text-card-foreground"
+                className="rounded-lg shadow-lg bg-white w-[30vw] flex justify-center border bg-card text-card-foreground"
               >
                 <div className="rounded-lg bg-white bg-card text-card-foreground shadow-sm w-full max-w-sm">
                   <div className="p-6 space-y-4 text-center">

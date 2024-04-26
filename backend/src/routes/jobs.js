@@ -16,6 +16,7 @@ router.post("/", auth, async (req, res) => {
       const newJobs = new addJobs({
         title: req.body.title,
         description: req.body.description,
+        batch: req.body.batch,
         link: req.body.link,
         eligibility: req.body.eligibility,
         tag: req.body.tag,
@@ -49,6 +50,7 @@ router.put("/:id", auth, async (req, res) => {
           $set: {
             title: req.body.title,
             description: req.body.description,
+            batch: req.body.batch,
             eligibility: req.body.eligibility,
             link: req.body.link,
             tag: req.body.tag,

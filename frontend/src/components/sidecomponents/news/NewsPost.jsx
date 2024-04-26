@@ -38,6 +38,7 @@ const NewsPost = () => {
     e.preventDefault();
     const title = e.target.title.value;
     const description = e.target.description.value;
+    const moredescription = e.target.moredescription.value;
     const tag = e.target.tag.value;
     const link = e.target.link.value;
     api
@@ -46,6 +47,7 @@ const NewsPost = () => {
         description,
         tag,
         link,
+        moredescription,
       })
       .then((response) => {
         if (response.status == 200) {
@@ -87,6 +89,16 @@ const NewsPost = () => {
             className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Enter your desciption"
             required
+          />
+        </div>
+        <div className="mb-5">
+          <textarea
+            rows={5}
+            type="text"
+            name="moredescription"
+            id="moredesciption"
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Describe your desciption"
           />
         </div>
         <div className="mb-5">

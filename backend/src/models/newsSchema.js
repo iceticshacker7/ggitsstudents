@@ -13,6 +13,9 @@ const newsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  moredescription: {
+    type: String,
+  },
   tag: {
     type: String,
     required: true,

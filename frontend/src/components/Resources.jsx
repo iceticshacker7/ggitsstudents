@@ -5,7 +5,6 @@ import Navbar from "./Navbar";
 import getUserData from "../utils/getUserData";
 import getResources from "../utils/getResources";
 import { Button } from "@chakra-ui/react";
-import Card from "./helper/Cards";
 import Header from "./Header";
 import ResourcesCard from "./helper/ResourcesCard";
 const Resources = () => {
@@ -26,9 +25,7 @@ const Resources = () => {
                   </Button>
                 </div>
               </Link>
-            ) : (
-              null
-            )}
+            ) : null}
             <div className="space-y-2 ">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl text-center md:text-5xl">
                 BEST RESOURCES TO LEARN
@@ -42,6 +39,7 @@ const Resources = () => {
                     <ResourcesCard
                       title={resource.title}
                       description={resource.description}
+                      moredescription={resource.moredescription}
                       tag={resource.tag}
                       link={resource.link}
                     />
