@@ -1,5 +1,6 @@
 const { Ranking } = require("../models/db2.model.js");
 const runCalculations = require("../models/calculateScore.js");
+const { mainRating } = require("../models/db2.model");
 
 async function updateRanking(id, name, branch, batch, score, rating) {
   try {
@@ -34,9 +35,9 @@ async function updateRanking(id, name, branch, batch, score, rating) {
 async function runAndUpdateRankings() {
   try {
     // Assuming runCalculations returns a promise
-
-    const calculations = await runCalculations();
-    console.log("Calculations:", calculations);
+    const handles = await mainRating.find().lean();
+    const calculations = await runCalculations(handles);
+    // console.log("Calculations:", calculations);
 
     // Use forEach to iterate over the results
     calculations.map(async (Calculate) => {

@@ -6,7 +6,7 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 
 //GET ALL RESOURCES
-router.get("/", async (req, res) => {
+router.get("/getHandles", async (req, res) => {
   const result = await Ranking.find();
   res.send(result);
 });
@@ -25,12 +25,8 @@ router.post("/", auth, async (req, res) => {
         GFGLink: req.body.GFGLink,
       });
 
+      await newPerson.save();
       runAndUpdateRankings();
-      const registered = await newPerson.save();
-
-      res.send(registered);
-      console.log(registered);
-
       res.sendStatus(200);
       console.log("Person added successfully");
     } catch (error) {

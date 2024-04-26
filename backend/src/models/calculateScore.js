@@ -2,7 +2,8 @@ const axios = require("axios");
 const { mainRating } = require("../models/db2.model");
 const cheerio = require("cheerio");
 
-const handles = await mainRating.find();
+
+
 
 async function codeforces(handler) {
   const handle = handler;
@@ -274,7 +275,7 @@ async function gfgScore(handle) {
     throw error;
   }
 }
-async function runCalculations() {
+async function runCalculations(handles) {
   const calculations = await Promise.all(
     handles.map(async (handle) => {
       let score = 0;
@@ -381,7 +382,7 @@ async function runCalculations() {
       return calculationResult;
     })
   );
-  console.log("All calculations:", calculations);
+  // console.log("All calculations:", calculations);
 
   return calculations;
 }

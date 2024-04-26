@@ -9,7 +9,7 @@ const getLeaderboard = () => {
       try {
         // Assuming your backend is running on http://localhost:5000/
         const response = await axios.get(
-          "http://localhost:5000/api/getHandles"
+          "http://localhost:5000/leaderboard/getHandles"
         );
         setHandles(response.data);
       } catch (error) {
