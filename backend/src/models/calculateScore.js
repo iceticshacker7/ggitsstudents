@@ -1,4 +1,4 @@
-import handles from "./prac.js";
+import handles from "./handles.js";
 import axios from "axios";
 import cheerio from "cheerio";
 import { CodeForcesAPI } from "codeforces-api-ts";
