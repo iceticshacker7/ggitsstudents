@@ -1,6 +1,8 @@
-const handles = require("./handles.js");
 const axios = require("axios");
+const { mainRating } = require("../models/db2.model");
 const cheerio = require("cheerio");
+
+const handles = await mainRating.find();
 
 async function codeforces(handler) {
   const handle = handler;
@@ -365,14 +367,14 @@ async function runCalculations() {
       // if (p != 0) console.log(rating);
       const calculationResult = Calculate(
         handle["_id"],
-        handle["Name "],
+        handle["Name"],
         handle.Branch,
         handle.Batch,
         score,
         rating
       );
       console.log(
-        `Calculation Result for ${handle["Name "]}:`,
+        `Calculation Result for ${handle["Name"]}:`,
         calculationResult
       );
 

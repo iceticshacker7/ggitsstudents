@@ -1,5 +1,5 @@
-const Ranking = require("../models/db2.model.js");
-const runCalculations = require("./calculateScore.js");
+const { Ranking } = require("../models/db2.model.js");
+const runCalculations = require("../models/calculateScore.js");
 
 async function updateRanking(id, name, branch, batch, score, rating) {
   try {
@@ -34,6 +34,7 @@ async function updateRanking(id, name, branch, batch, score, rating) {
 async function runAndUpdateRankings() {
   try {
     // Assuming runCalculations returns a promise
+
     const calculations = await runCalculations();
     console.log("Calculations:", calculations);
 

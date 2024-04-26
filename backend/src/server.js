@@ -8,7 +8,6 @@ const { mainRating } = require("./models/db2.model.js");
 const cors = require("cors");
 const port = process.env.PORT || 5000;
 const auth = require("./middleware/auth");
-const getHandlesFromMongo = require("./models/getLeaderboard.js");
 require("./db/Connection");
 
 const corsOptionss = {
@@ -38,21 +37,6 @@ app.use("/jobs", jobRouter);
 app.use("/news", newsRouter);
 app.use("/login", loginRouter);
 app.use("/leaderboard", leaderboardRouter);
-
-const getHandlesAndSendResponse = async (res) => {
-  try {
-    const handles = await getHandlesFromMongo();
-    res.json(handles);
-  } catch (error) {
-    console.error("Error getting handles:", error.message);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-};
-
-// Initial call to getHandlesAndSendResponse
-app.get("/api/getHandles", async (req, res) => {
-  getHandlesAndSendResponse(res);
-});
 
 app.listen(port, (req, res) => {
   console.log(`Server is running at port ${port}`);

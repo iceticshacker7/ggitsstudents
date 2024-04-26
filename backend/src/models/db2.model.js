@@ -2,17 +2,6 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 var MongoClient = require("mongodb").MongoClient;
 
-// Connect to the first database
-
-const connectDB = async () => {
-  const uri = process.env.LEADERBOARD_URI;
-  const client = new MongoClient(uri);
-  await client.connect();
-  console.log("hereeee");
-};
-
-connectDB();
-
 // Schema for the ratings model in the first database
 const RatingsSchema = new mongoose.Schema({
   Name: {
@@ -80,9 +69,6 @@ const RankingSchema = new mongoose.Schema({
   },
 });
 
-const db2Connection = mongoose.createConnection(
-  "mongodb+srv://adityagotnochill:ddrrdrdD7@cluster0.fxaupan.mongodb.net/Leaderboard"
-);
-const Ranking = db2Connection.model("Ranking", RankingSchema);
+const Ranking = new mongoose.model("Ranking", RankingSchema);
 const mainRating = new mongoose.model("rating", RatingsSchema);
 module.exports = { mainRating, Ranking };

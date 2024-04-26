@@ -1,14 +1,13 @@
 const express = require("express");
 // const addResource = require("../models/resourcesSchema");
-const { mainRating } = require("../models/db2.model");
+const { mainRating, Ranking } = require("../models/db2.model");
 const runAndUpdateRankings = require("../models/populatedb2");
 const router = express.Router();
 const auth = require("../middleware/auth");
-require("../db/Connection2");
 
 //GET ALL RESOURCES
 router.get("/", async (req, res) => {
-  const result = await mainRating.find();
+  const result = await Ranking.find();
   res.send(result);
 });
 
@@ -26,7 +25,9 @@ router.post("/", auth, async (req, res) => {
         GFGLink: req.body.GFGLink,
       });
 
+      runAndUpdateRankings();
       const registered = await newPerson.save();
+
       res.send(registered);
       console.log(registered);
 
