@@ -1,18 +1,11 @@
-import handles from "./handles.js";
-import axios from "axios";
-import cheerio from "cheerio";
-import { CodeForcesAPI } from "codeforces-api-ts";
+const handles = require("./handles.js");
+const axios = require("axios");
+const cheerio = require("cheerio");
 
 async function codeforces(handler) {
   const handle = handler;
 
   try {
-    // Set your API credentials
-    CodeForcesAPI.setCredentials({
-      API_KEY: "3d8a84adf90c56559d2c423c988745a9c05d6b3e",
-      API_SECRET: "26321f454f1ef70252cdb8e1b8b18288efb96b22",
-    });
-
     // Fetch user info
     const userInfoResponse = await CodeForcesAPI.user.info({ handles: handle });
     const userInfo = await CodeForcesAPI.user.rating({ handle: handle });
@@ -23,7 +16,11 @@ async function codeforces(handler) {
     }
 
     // Fetch user submissions
-    const submissionsResponse = await CodeForcesAPI.user.status({ handle: handle, from: 1, count: 2000 });
+    const submissionsResponse = await CodeForcesAPI.user.status({
+      handle: handle,
+      from: 1,
+      count: 2000,
+    });
     const submissions = submissionsResponse.data.result;
 
     // Initialize counters
@@ -75,9 +72,9 @@ async function codeforces(handler) {
   }
 }
 // console.log(handles);
-const Calculate = async (id,Name, Branch, Batch, Score, Rating) => {
+const Calculate = async (id, Name, Branch, Batch, Score, Rating) => {
   return {
-    _id:id,
+    _id: id,
     Name: Name,
     Branch: Branch,
     Batch: Batch,
@@ -297,7 +294,7 @@ async function runCalculations() {
         const handler = links.codechef.split("/")[4];
 
         const codechefScore = await codechef(handler);
-        if (codechefScore.rating != 0 && codechefScore.rating!=undefined) {
+        if (codechefScore.rating != 0 && codechefScore.rating != undefined) {
           score += (codechefScore.rating / 1000) * codechefScore.sum * 2;
           rating += parseFloat(codechefScore.rating);
           p++;
@@ -314,12 +311,18 @@ async function runCalculations() {
       ) {
         const handler = links.leetcode.split("/")[3];
         const leetcodeScore = await leetcode(handler);
-        if (leetcodeScore.globalRating != 0 && leetcodeScore.globalRating!=undefined) {
+        if (
+          leetcodeScore.globalRating != 0 &&
+          leetcodeScore.globalRating != undefined
+        ) {
           p++;
           rating += parseFloat(leetcodeScore.globalRating);
         }
         // console.log(leetcodeScore.totalSolved);
-        score += leetcodeScore.easySolved*1 + leetcodeScore.mediumSolved*4 + leetcodeScore.hardSolved*7;
+        score +=
+          leetcodeScore.easySolved * 1 +
+          leetcodeScore.mediumSolved * 4 +
+          leetcodeScore.hardSolved * 7;
       }
       // if (
       //   links.codeforces != null &&
@@ -353,11 +356,11 @@ async function runCalculations() {
         links.gfg != null &&
         links.gfg != "NA" &&
         links.gfg.trim() != "none" &&
-        links.gfg != undefined 
-      ){
+        links.gfg != undefined
+      ) {
         const handler = links.gfg.split("/")[4];
         const gs = await gfgScore(handler);
-        score += parseInt(gs)/1.3;
+        score += parseInt(gs) / 1.3;
       }
       // if (p != 0) console.log(rating);
       const calculationResult = Calculate(
@@ -368,14 +371,17 @@ async function runCalculations() {
         score,
         rating
       );
-      console.log(`Calculation Result for ${handle["Name "]}:`, calculationResult);
+      console.log(
+        `Calculation Result for ${handle["Name "]}:`,
+        calculationResult
+      );
 
       return calculationResult;
     })
   );
   console.log("All calculations:", calculations);
 
-    return calculations;
+  return calculations;
 }
 // runCalculations();
-export {runCalculations};
+module.exports = runCalculations;

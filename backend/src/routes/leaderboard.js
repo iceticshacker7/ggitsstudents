@@ -1,31 +1,39 @@
 const express = require("express");
-const addResource = require("../models/resourcesSchema");
+// const addResource = require("../models/resourcesSchema");
+const { mainRating } = require("../models/db2.model");
+const runAndUpdateRankings = require("../models/populatedb2");
 const router = express.Router();
 const auth = require("../middleware/auth");
+require("../db/Connection2");
 
 //GET ALL RESOURCES
 router.get("/", async (req, res) => {
-  const result = await addResource.find();
+  const result = await mainRating.find();
   res.send(result);
 });
 
 //NEW RESOURCE CREATION
 router.post("/", auth, async (req, res) => {
-  if (req.user.role == "admin" || req.user.role == "resources") {
+  if (req.user.role == "admin" || req.user.role == "leaderboard") {
     try {
-      const newResource = new addResource({
-        title: req.body.title,
-        description: req.body.description,
-        link: req.body.link,
-        tag: req.body.tag,
+      const newPerson = new mainRating({
+        Name: req.body.Name,
+        Branch: req.body.Branch,
+        Batch: req.body.Batch,
+        LeetcodeLink: req.body.LeetcodeLink,
+        CodechefLink: req.body.CodechefLink,
+        CodeforcesLink: req.body.CodeforcesLink,
+        GFGLink: req.body.GFGLink,
       });
 
-      const registered = await newResource.save();
+      const registered = await newPerson.save();
+      res.send(registered);
+      console.log(registered);
 
       res.sendStatus(200);
-      console.log("resource uploaded successfully");
+      console.log("Person added successfully");
     } catch (error) {
-      res.send("Error while uploading resource");
+      res.send("Error while adding person");
       console.log(error);
     }
   } else {

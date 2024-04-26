@@ -1,12 +1,10 @@
-import { MongoClient } from "mongodb";
+var MongoClient = require("mongodb").MongoClient;
+
 async function getHandlesFromMongo() {
   const uri =
     "mongodb+srv://adityagotnochill:ddrrdrdD7@cluster0.fxaupan.mongodb.net/";
 
-  const client = new MongoClient(uri, {
-    
-    
-  });
+  const client = new MongoClient(uri, {});
 
   try {
     await client.connect();
@@ -26,5 +24,5 @@ async function getHandlesFromMongo() {
   }
 }
 
-const handles = await getHandlesFromMongo();
-export default handles;
+const handles = getHandlesFromMongo();
+module.exports = handles;

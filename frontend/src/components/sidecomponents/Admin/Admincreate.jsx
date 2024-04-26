@@ -89,6 +89,7 @@ const Admincreate = () => {
           >
             <option value="news"> news </option>
             <option value="jobs"> jobs </option>
+            <option value="leaderboard"> leaderboard </option>
             <option value="resources"> resources </option>
           </select>
         </div>

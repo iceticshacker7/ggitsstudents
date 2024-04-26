@@ -4,6 +4,7 @@ const app = express();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
+const { mainRating } = require("./models/db2.model.js");
 const cors = require("cors");
 const port = process.env.PORT || 5000;
 const auth = require("./middleware/auth");
@@ -28,6 +29,7 @@ const resourcesRouter = require("./routes/resources");
 const jobRouter = require("./routes/jobs.js");
 const newsRouter = require("./routes/news.js");
 const loginRouter = require("./routes/login.js");
+const leaderboardRouter = require("./routes/leaderboard.js");
 
 //configuring routes
 app.use("/admin", rolesRouter);
@@ -35,7 +37,7 @@ app.use("/resources", resourcesRouter);
 app.use("/jobs", jobRouter);
 app.use("/news", newsRouter);
 app.use("/login", loginRouter);
-// app.use("/leaderboard", leaderboardRouter);
+app.use("/leaderboard", leaderboardRouter);
 
 const getHandlesAndSendResponse = async (res) => {
   try {

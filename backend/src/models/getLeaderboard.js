@@ -2,8 +2,7 @@ require("dotenv").config();
 var MongoClient = require("mongodb").MongoClient;
 
 async function getHandlesFromMongo() {
-  const uri =
-    process.env.LEADERBOARD_URI;
+  const uri = process.env.LEADERBOARD_URI;
   const client = new MongoClient(uri);
   try {
     await client.connect();
