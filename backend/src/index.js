@@ -7,8 +7,8 @@ const cookieParser = require("cookie-parser");
 const { mainRating } = require("./models/db2.model.js");
 const cors = require("cors");
 const port = process.env.PORT || 5000;
-const auth = require("./middleware/auth");
-require("./db/Connection");
+const auth = require("./middleware/auth.js");
+require("./db/Connection.js");
 
 const corsOptionss = {
   origin: "http://localhost:5173",
@@ -23,8 +23,8 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
 //importing routes
-const rolesRouter = require("./routes/roles");
-const resourcesRouter = require("./routes/resources");
+const rolesRouter = require("./routes/roles.js");
+const resourcesRouter = require("./routes/resources.js");
 const jobRouter = require("./routes/jobs.js");
 const newsRouter = require("./routes/news.js");
 const loginRouter = require("./routes/login.js");
