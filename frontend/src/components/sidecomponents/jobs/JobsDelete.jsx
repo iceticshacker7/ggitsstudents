@@ -36,13 +36,15 @@ const JobsDelete = () => {
   useEffect(() => {
     getUserData();
     const ans = confirm("do you want to delete the job? ");
-    if (ans == false) {
-      Navigate("/jobs");
-      return;
-    } else {
-      deleteJob();
-      Navigate("/jobs");
-      return;
+    if (user == "admin" || user == "jobs") {
+      if (ans == false) {
+        Navigate("/jobs");
+        return;
+      } else {
+        deleteJob();
+        Navigate("/jobs");
+        return;
+      }
     }
   });
 

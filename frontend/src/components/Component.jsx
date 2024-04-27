@@ -9,7 +9,7 @@ export default function Component({
   rank,
 }) {
   return (
-    <div className="rounded-lg shadow-lg bg-white w-[40vw] flex justify-center border bg-card text-card-foreground ">
+    <div className="rounded-lg shadow-lg bg-white w-[30vw] flex justify-center border bg-card text-card-foreground ">
       <div
         className="rounded-lg bg-white bg-card text-card-foreground shadow-sm w-full max-w-sm"
         data-v0-t="card"
@@ -32,7 +32,7 @@ export default function Component({
             {" "}
             {/* Centering content */}
             <div className="text-2xl font-semibold">
-              Points: {Math.floor(score)}
+              Score: {Math.floor(score)}
             </div>
             <div className="text-2xl font-semibold">
               Rating: {Math.floor(rating)}

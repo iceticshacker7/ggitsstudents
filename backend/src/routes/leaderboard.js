@@ -1,31 +1,44 @@
 const express = require("express");
-const addResource = require("../models/resourcesSchema");
+// const addResource = require("../models/resourcesSchema");
+const { mainRating, Ranking } = require("../models/db2.model");
+const runAndUpdateRankings = require("../models/populatedb2");
 const router = express.Router();
 const auth = require("../middleware/auth");
 
 //GET ALL RESOURCES
 router.get("/", async (req, res) => {
-  const result = await addResource.find();
+  const result = await Ranking.find().sort({ Score: 1 });
   res.send(result);
+});
+router.get("/getrating", auth, async (req, res) => {
+  if (req.user.role == "admin" || req.user.role == "leaderboard") {
+    const result = await mainRating.find();
+    res.send(result);
+  } else {
+    console.log("Access Denied for accessing");
+  }
 });
 
 //NEW RESOURCE CREATION
 router.post("/", auth, async (req, res) => {
-  if (req.user.role == "admin" || req.user.role == "resources") {
+  if (req.user.role == "admin" || req.user.role == "leaderboard") {
     try {
-      const newResource = new addResource({
-        title: req.body.title,
-        description: req.body.description,
-        link: req.body.link,
-        tag: req.body.tag,
+      const newPerson = new mainRating({
+        Name: req.body.Name,
+        Branch: req.body.Branch,
+        Batch: req.body.Batch,
+        LeetcodeLink: req.body.LeetcodeLink,
+        CodechefLink: req.body.CodechefLink,
+        CodeforcesLink: req.body.CodeforcesLink,
+        GFGLink: req.body.GFGLink,
       });
 
-      const registered = await newResource.save();
-
+      await newPerson.save();
+      runAndUpdateRankings();
       res.sendStatus(200);
-      console.log("resource uploaded successfully");
+      console.log("Person added successfully");
     } catch (error) {
-      res.send("Error while uploading resource");
+      res.send("Error while adding person");
       console.log(error);
     }
   } else {
@@ -35,28 +48,34 @@ router.post("/", auth, async (req, res) => {
 
 //UPDATE RESOURCE INFORMATION
 router.put("/:id", auth, async (req, res) => {
-  if (req.user.role == "admin" || req.user.role == "resources") {
+  if (req.user.role == "admin" || req.user.role == "leaderboard") {
     try {
-      const resourceid = req.params.id;
-      if (!addResource.findOne({ resourceid })) {
-        res.send("resource not found for updation.");
+      const personid = req.params.id;
+      if (!mainRating.findOne({ personid })) {
+        res.send("Person not found for updation.");
         return;
       }
-      const result = await addResource.findOneAndUpdate(
+
+      const result = await mainRating.findOneAndUpdate(
         { _id: req.params.id },
         {
           $set: {
-            title: req.body.title,
-            description: req.body.description,
-            link: req.body.link,
-            tag: req.body.tag,
+            Name: req.body.Name,
+            Branch: req.body.Branch,
+            Batch: req.body.Batch,
+            LeetcodeLink: req.body.LeetcodeLink,
+            CodechefLink: req.body.CodechefLink,
+            CodeforcesLink: req.body.CodeforcesLink,
+            GFGLink: req.body.GFGLink,
           },
         }
       );
       console.log("update successful");
+      runAndUpdateRankings();
       res.send(result);
     } catch (error) {
-      response.send("error while updating the data");
+      console.log(error);
+      res.send("error while updating the data");
     }
   } else {
     res.status(401).send({ data: "permission denied" });
@@ -65,17 +84,18 @@ router.put("/:id", auth, async (req, res) => {
 
 //DELETE USER
 router.delete("/:id", auth, async (req, res) => {
-  if (req.user.role == "admin" || req.user.role == "resources") {
+  if (req.user.role == "admin" || req.user.role == "leaderboard") {
     try {
-      const resourceid = req.params.id;
-      const isExist = await addResource.findOne({ _id: resourceid });
+      const personid = req.params.id;
+      const isExist = await mainRating.findOne({ _id: personid });
       if (!isExist) {
-        res.send("resource not found");
+        res.send("Person not found");
         return;
       }
-      const result = await addResource.findOneAndDelete({ _id: resourceid });
+      const result = await mainRating.findOneAndDelete({ _id: personid });
+      const result2 = await Ranking.findOneAndDelete({ _id: personid });
       res.send(result);
-      console.log("resource Delete successfully!");
+      console.log("Person Delete successfully!");
     } catch (error) {
       console.log(error);
     }

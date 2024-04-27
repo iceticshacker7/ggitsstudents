@@ -5,7 +5,7 @@ const auth = require("../middleware/auth");
 
 //GET ALL NEWS/HACKATHON
 router.get("/", async (req, res) => {
-  const result = await addNews.find();
+  const result = await addNews.find().sort({ _id: -1 });
   res.send(result);
 });
 
@@ -16,6 +16,7 @@ router.post("/", auth, async (req, res) => {
       const newNews = new addNews({
         title: req.body.title,
         description: req.body.description,
+        moredescription: req.body.moredescription,
         link: req.body.link,
         tag: req.body.tag,
       });
@@ -48,6 +49,7 @@ router.put("/:id", auth, async (req, res) => {
           $set: {
             title: req.body.title,
             description: req.body.description,
+            moredescription: req.body.moredescription,
             tag: req.body.tag,
             link: req.body.link,
             tag: req.body.tag,

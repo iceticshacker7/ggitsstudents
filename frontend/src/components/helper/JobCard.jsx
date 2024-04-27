@@ -1,14 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const JobComponent = ({
-  title,
-  description,
-  tag,
-  eligibility,
-  Batch,
-  link,
-}) => {
+const JobComponent = ({ title, description, tag, eligibility, link }) => {
   return (
     <div className="flex justify-center items-center my-3">
       <div
@@ -18,12 +11,10 @@ const JobComponent = ({
         <div className="p-6">
           <h2 className="text-2xl font-bold leading-tight">{title}</h2>
           <div className="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 mt-2">
-            Batch: {Batch}
+            Batch: {eligibility}
           </div>
           <div className="mt-4">
-            <h3 className="font-semibold text-lg">
-              Skillset Required
-            </h3>
+            <h3 className="font-semibold text-lg">Skillset Required:</h3>
             <div className="flex flex-wrap gap-2 mt-2">
               <div className="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80">
                 {tag}
@@ -33,9 +24,7 @@ const JobComponent = ({
           </div>
           <div className="mt-4">
             <h3 className="font-semibold text-lg">Description</h3>
-            <p className="mt-2">
-              {description}
-            </p>
+            <p className="mt-2">{description}</p>
           </div>
 
           <div className="flex justify-between items-center mt-6">

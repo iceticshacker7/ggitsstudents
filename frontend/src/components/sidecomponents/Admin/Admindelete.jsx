@@ -4,9 +4,9 @@ import Header from "../../Header";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const NewsDelete = () => {
+const Admindelete = () => {
   const Navigate = useNavigate();
-  const { newsid } = useParams();
+  const { userid } = useParams();
   const [user, setUser] = useState("");
   const [success, setSuccess] = useState([]);
 
@@ -20,7 +20,7 @@ const NewsDelete = () => {
     console.log("getuserdata");
     try {
       const data = await api.get("http://localhost:5000/login");
-      if (data.data.role == "admin" || data.data.role == "news") {
+      if (data.data.role == "admin") {
         setUser(data.data.role);
       } else {
         alert("access denied");
@@ -36,29 +36,30 @@ const NewsDelete = () => {
 
   useEffect(() => {
     getUserData();
-    if (user == "admin" || user == "news") {
-      const ans = confirm("do you want to delete the news? ");
+    const ans = confirm("do you want to delete the user? ");
+    if (user == "admin") {
       if (ans == false) {
-        Navigate("/news");
+        Navigate("/admin");
         return;
       } else {
-        deleteNews();
-        Navigate("/news");
+        deleteUser();
+        Navigate("/admin");
         return;
       }
     }
   });
 
-  const deleteNews = async () => {
+  const deleteUser = async () => {
     api
-      .delete("http://localhost:5000/news/" + newsid)
+      .delete("http://localhost:5000/admin/" + userid)
       .then((response) => {
+        console.log(response);
         if (response.status == 200) {
-          alert("News Deleted Successfully!");
-          Navigate("/news");
+          alert("User Deleted Successfully!");
+          Navigate("/admin");
           console.log(response);
         } else {
-          alert("Error while deleting news!");
+          alert("Error while deleting user!");
           Navigate("/news");
         }
       })
@@ -77,4 +78,4 @@ const NewsDelete = () => {
   );
 };
 
-export default NewsDelete;
+export default Admindelete;

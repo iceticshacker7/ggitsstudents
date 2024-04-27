@@ -13,6 +13,9 @@ const resourceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  moredescription: {
+    type: String,
+  },
   link: {
     type: String,
     required: true,

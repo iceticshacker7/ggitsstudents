@@ -1,6 +1,5 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-const pass = process.env.PASSWORD;
 const uri = process.env.URI;
 
 mongoose

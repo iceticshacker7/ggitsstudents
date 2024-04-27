@@ -29,18 +29,32 @@ import Home from "./components/Home";
 import ResourcesPost from "./components/sidecomponents/resources/ResourcesPost";
 import ResourcesEdit from "./components/sidecomponents/resources/ResourcesEdit";
 import ResourcesDelete from "./components/sidecomponents/resources/ResroucesDelete";
+import Admincreate from "./components/sidecomponents/Admin/Admincreate";
+import Adminedit from "./components/sidecomponents/Admin/Adminedit";
+import Admindelete from "./components/sidecomponents/Admin/Admindelete";
+import LeaderBoardEdit from "./components/sidecomponents/leaderboard/LeaderBoardEdit";
+import LeaderBoardDelete from "./components/sidecomponents/leaderboard/LeaderBoardDelete";
+import LeaderBoardPost from "./components/sidecomponents/leaderboard/LeaderBoardPost";
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <MainBody />,
   },
   {
-    path: "/home",
-    element: <Home />,
-  },
-  {
     path: "/leaderboard",
     element: <MainBody />,
+  },
+  {
+    path: "/leaderboardpost",
+    element: <LeaderBoardPost />,
+  },
+  {
+    path: "/leaderboardedit/:personid",
+    element: <LeaderBoardEdit />,
+  },
+  {
+    path: "/leaderboarddelete/:personid",
+    element: <LeaderBoardDelete />,
   },
   {
     path: "/news",
@@ -97,6 +111,18 @@ const appRouter = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />,
+  },
+  {
+    path: "/admin/usercreate",
+    element: <Admincreate />,
+  },
+  {
+    path: "/admin/useredit/:userid",
+    element: <Adminedit />,
+  },
+  {
+    path: "/admin/userdelete/:userid",
+    element: <Admindelete />,
   },
   {
     path: "/logout",
