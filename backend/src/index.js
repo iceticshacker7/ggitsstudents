@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
 const { mainRating } = require("./models/db2.model.js");
 const cors = require("cors");
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 const auth = require("./middleware/auth.js");
 require("./db/Connection.js");
 

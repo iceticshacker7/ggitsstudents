@@ -15,7 +15,7 @@ const LeaderBoardPost = () => {
   });
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:5000/login");
+      const data = await api.get("http://localhost:3000/login");
       if (data.data.role == "admin" || data.data.role == "leaderboard") {
         setUser(data.data.role);
       } else {
@@ -44,7 +44,7 @@ const LeaderBoardPost = () => {
     const CodeforcesLink = e.target.CodeforcesLink.value;
     const GFGLink = e.target.GFGLink.value;
     api
-      .post("http://localhost:5000/leaderboard", {
+      .post("http://localhost:3000/leaderboard", {
         Name,
         Branch,
         Batch,

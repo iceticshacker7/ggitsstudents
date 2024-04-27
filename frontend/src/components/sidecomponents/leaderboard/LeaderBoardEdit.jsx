@@ -19,7 +19,7 @@ const NewsEdit = () => {
 
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:5000/login");
+      const data = await api.get("http://localhost:3000/login");
       if (data.data.role == "admin" || data.data.role == "leaderboard") {
         setUser(data.data.role);
       } else {
@@ -36,7 +36,7 @@ const NewsEdit = () => {
 
   const getFilteredData = async () => {
     const datas = await axios.get(
-      "http://localhost:5000/leaderboard/getrating",
+      "http://localhost:3000/leaderboard/getrating",
       { withCredentials: true }
     );
     datas.data.map((data) => {
@@ -61,7 +61,7 @@ const NewsEdit = () => {
     const CodeforcesLink = e.target.CodeforcesLink.value;
     const GFGLink = e.target.GFGLink.value;
     api
-      .put("http://localhost:5000/leaderboard/" + personid, {
+      .put("http://localhost:3000/leaderboard/" + personid, {
         Name,
         Branch,
         Batch,

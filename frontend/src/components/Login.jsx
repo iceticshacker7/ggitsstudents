@@ -17,7 +17,7 @@ const Login = () => {
       },
     });
     api
-      .post("http://localhost:5000/login", {
+      .post("http://localhost:3000/login", {
         username,
         password,
       })

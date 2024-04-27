@@ -15,7 +15,7 @@ const ResourcesPost = () => {
   });
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:5000/login");
+      const data = await api.get("http://localhost:3000/login");
       if (data.data.role == "admin" || data.data.role == "resources") {
         setUser(data.data.role);
       } else {
@@ -42,7 +42,7 @@ const ResourcesPost = () => {
     const tag = e.target.tag.value;
     const link = e.target.link.value;
     api
-      .post("http://localhost:5000/resources", {
+      .post("http://localhost:3000/resources", {
         title,
         description,
         moredescription,

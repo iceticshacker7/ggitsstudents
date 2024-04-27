@@ -15,7 +15,7 @@ const NewsPost = () => {
   });
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:5000/login");
+      const data = await api.get("http://localhost:3000/login");
       if (data.data.role == "admin" || data.data.role == "news") {
         setUser(data.data.role);
       } else {
@@ -42,7 +42,7 @@ const NewsPost = () => {
     const tag = e.target.tag.value;
     const link = e.target.link.value;
     api
-      .post("http://localhost:5000/news", {
+      .post("http://localhost:3000/news", {
         title,
         description,
         tag,

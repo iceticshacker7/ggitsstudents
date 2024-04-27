@@ -19,7 +19,7 @@ const JobsEdit = () => {
 
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:5000/login");
+      const data = await api.get("http://localhost:3000/login");
       if (data.data.role == "admin" || data.data.role == "jobs") {
         setUser(data.data.role);
       } else {
@@ -35,7 +35,7 @@ const JobsEdit = () => {
   };
 
   const getFilteredData = async () => {
-    const datas = await axios.get("http://localhost:5000/jobs");
+    const datas = await axios.get("http://localhost:3000/jobs");
     datas.data.map((data) => {
       if (data._id == jobid) {
         setFilteredData(data);
@@ -56,7 +56,7 @@ const JobsEdit = () => {
     const eligibility = e.target.eligibility.value;
     const link = e.target.link.value;
     api
-      .put("http://localhost:5000/jobs/" + jobid, {
+      .put("http://localhost:3000/jobs/" + jobid, {
         title,
         description,
         tag,

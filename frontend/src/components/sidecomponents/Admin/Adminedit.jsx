@@ -19,7 +19,7 @@ const Adminedit = () => {
 
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:5000/login");
+      const data = await api.get("http://localhost:3000/login");
       if (data.data.role == "admin") {
         setUser(data.data.role);
       } else {
@@ -36,7 +36,7 @@ const Adminedit = () => {
 
   const getFilteredData = async () => {
     try {
-      const datas = await api.get("http://localhost:5000/admin");
+      const datas = await api.get("http://localhost:3000/admin");
       datas.data.map((data) => {
         if (data._id == userid) {
           setFilteredData(data);
@@ -57,7 +57,7 @@ const Adminedit = () => {
     const username = e.target.username.value;
     const role = e.target.role.value;
     api
-      .put("http://localhost:5000/admin/" + userid, {
+      .put("http://localhost:3000/admin/" + userid, {
         username,
         role,
       })
