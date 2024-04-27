@@ -11,7 +11,7 @@ const auth = require("./middleware/auth.js");
 require("./db/Connection.js");
 
 const corsOptionss = {
-  origin: "http://localhost:5173",
+  origin: "https://ggits-coding-club.vercel.app/",
   methods: "GET, POST, PUT, DELETE, HEAD",
   credentials: true,
   optionSuccessStatus: 200,
@@ -41,5 +41,3 @@ app.use("/leaderboard", leaderboardRouter);
 app.listen(port, (req, res) => {
   console.log(`Server is running at port ${port}`);
 });
-
-module.exports = app;
