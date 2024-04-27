@@ -258,18 +258,19 @@ async function hasSolvedOnCodeforces(profileUrl) {
 }
 async function gfgScore(handle) {
   try {
-    const response = await axios.get(
-      `https://geeks-for-geeks-api.vercel.app/${handle}`
+    const url = `https://www.geeksforgeeks.org/user/${handle}`;
+    const response = await axios.get(url);
+    const $ = cheerio.load(response.data);
+    const overallCodingScore = parseInt(
+      $(".scoreCard_head_card_left--score__pC6ZA").first().text().trim()
     );
-    if (response.data && response.data.info && response.data.info.codingScore) {
-      return response.data.info.codingScore;
-    } else {
-      console.error("Invalid API response format");
-      return 0;
-    }
+    console.log(overallCodingScore);
+    return overallCodingScore;
   } catch (error) {
-    console.error("Error fetching profile score:", error.message);
-    throw error;
+    console.error(
+      `Error extracting overall coding score for ${handle}: ${error.message}`
+    );
+    return null;
   }
 }
 async function runCalculations(handles) {
@@ -280,10 +281,10 @@ async function runCalculations(handles) {
       let p = 0;
       const links = {
         _id: handle["_id"],
-        leetcode: handle["Leetcode Link"],
-        codechef: handle["Codechef Link"],
-        codeforces: handle["Codeforces Link"],
-        gfg: handle["GFG Link"],
+        leetcode: handle["LeetcodeLink"],
+        codechef: handle["CodechefLink"],
+        codeforces: handle["CodeforcesLink"],
+        gfg: handle["GFGLink"],
       };
       //if _id not present add _id update
       if (
@@ -360,6 +361,7 @@ async function runCalculations(handles) {
       ) {
         const handler = links.gfg.split("/")[4];
         const gs = await gfgScore(handler);
+        console.log(gs);  
         score += parseInt(gs) / 1.3;
       }
       // if (p != 0) console.log(rating);
