@@ -5,7 +5,7 @@ const auth = require("../middleware/auth");
 
 //GET ALL JOBS
 router.get("/", async (req, res) => {
-  const result = await addJobs.find();
+  const result = await addJobs.find().sort({ _id: -1 });
   res.send(result);
 });
 

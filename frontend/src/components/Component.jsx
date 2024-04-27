@@ -32,7 +32,7 @@ export default function Component({
             {" "}
             {/* Centering content */}
             <div className="text-2xl font-semibold">
-              Points: {Math.floor(score)}
+              Score: {Math.floor(score)}
             </div>
             <div className="text-2xl font-semibold">
               Rating: {Math.floor(rating)}

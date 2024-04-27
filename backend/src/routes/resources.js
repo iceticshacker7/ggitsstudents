@@ -5,7 +5,7 @@ const auth = require("../middleware/auth");
 
 //GET ALL RESOURCES
 router.get("/", async (req, res) => {
-  const result = await addResource.find();
+  const result = await addResource.find().sort({ _id: -1 });
   res.send(result);
 });
 

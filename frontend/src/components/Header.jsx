@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import getUserData from "../utils/getUserData";
+import mainlogo from "../assets/mainlogo.png";
 import { Link, useNavigate } from "react-router-dom";
 
 function Header() {

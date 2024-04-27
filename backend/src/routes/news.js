@@ -5,7 +5,7 @@ const auth = require("../middleware/auth");
 
 //GET ALL NEWS/HACKATHON
 router.get("/", async (req, res) => {
-  const result = await addNews.find();
+  const result = await addNews.find().sort({ _id: -1 });
   res.send(result);
 });
 

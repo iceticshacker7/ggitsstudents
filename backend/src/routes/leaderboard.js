@@ -7,7 +7,7 @@ const auth = require("../middleware/auth");
 
 //GET ALL RESOURCES
 router.get("/", async (req, res) => {
-  const result = await Ranking.find();
+  const result = await Ranking.find().sort({ Score: 1 });
   res.send(result);
 });
 router.get("/getrating", auth, async (req, res) => {
