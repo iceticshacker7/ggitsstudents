@@ -264,7 +264,7 @@ async function gfgScore(handle) {
     const overallCodingScore = parseInt(
       $(".scoreCard_head_card_left--score__pC6ZA").first().text().trim()
     );
-    console.log(overallCodingScore);
+    // console.log(overallCodingScore);
     return overallCodingScore;
   } catch (error) {
     console.error(
@@ -361,7 +361,7 @@ async function runCalculations(handles) {
       ) {
         const handler = links.gfg.split("/")[4];
         const gs = await gfgScore(handler);
-        console.log(gs);  
+        gs = parseInt(gs);
         score += parseInt(gs) / 1.3;
       }
       // if (p != 0) console.log(rating);
