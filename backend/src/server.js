@@ -41,3 +41,5 @@ app.use("/leaderboard", leaderboardRouter);
 app.listen(port, (req, res) => {
   console.log(`Server is running at port ${port}`);
 });
+
+module.exports = app;
