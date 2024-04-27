@@ -32,6 +32,9 @@ import ResourcesDelete from "./components/sidecomponents/resources/ResroucesDele
 import Admincreate from "./components/sidecomponents/Admin/Admincreate";
 import Adminedit from "./components/sidecomponents/Admin/Adminedit";
 import Admindelete from "./components/sidecomponents/Admin/Admindelete";
+import LeaderBoardEdit from "./components/sidecomponents/leaderboard/LeaderBoardEdit";
+import LeaderBoardDelete from "./components/sidecomponents/leaderboard/LeaderBoardDelete";
+import LeaderBoardPost from "./components/sidecomponents/leaderboard/LeaderBoardPost";
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +47,18 @@ const appRouter = createBrowserRouter([
   {
     path: "/leaderboard",
     element: <MainBody />,
+  },
+  {
+    path: "/leaderboardpost",
+    element: <LeaderBoardPost />,
+  },
+  {
+    path: "/leaderboardedit/:personid",
+    element: <LeaderBoardEdit />,
+  },
+  {
+    path: "/leaderboarddelete/:personid",
+    element: <LeaderBoardDelete />,
   },
   {
     path: "/news",

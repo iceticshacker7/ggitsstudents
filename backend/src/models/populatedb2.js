@@ -11,8 +11,19 @@ async function updateRanking(id, name, branch, batch, score, rating) {
     console.log("Update:", update);
 
     // Update the document that matches the filter
-    if (await Ranking.findOne(filter)) {
-      const result = await Ranking.updateOne(filter, update);
+    if (await Ranking.findOne({ _id: filter._id })) {
+      const result = await Ranking.findOneAndUpdate(
+        { _id: id },
+        {
+          $set: {
+            Name: name,
+            Branch: branch,
+            Batch: batch,
+            Score: score,
+            Rating: rating,
+          },
+        }
+      );
       console.log("Result:", result);
       console.log(`Successfully updated the ranking for ${name}`);
     } else {

@@ -36,14 +36,16 @@ const NewsDelete = () => {
 
   useEffect(() => {
     getUserData();
-    const ans = confirm("do you want to delete the news? ");
-    if (ans == false) {
-      Navigate("/news");
-      return;
-    } else {
-      deleteNews();
-      Navigate("/news");
-      return;
+    if (user == "admin" || user == "news") {
+      const ans = confirm("do you want to delete the news? ");
+      if (ans == false) {
+        Navigate("/news");
+        return;
+      } else {
+        deleteNews();
+        Navigate("/news");
+        return;
+      }
     }
   });
 

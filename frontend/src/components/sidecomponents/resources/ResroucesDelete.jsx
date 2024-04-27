@@ -36,14 +36,16 @@ const ResourcesDelete = () => {
 
   useEffect(() => {
     getUserData();
-    const ans = confirm("do you want to delete the resource? ");
-    if (ans == false) {
-      Navigate("/resources");
-      return;
-    } else {
-      deleteNews();
-      Navigate("/resources");
-      return;
+    if (user == "admin" || user == "resources") {
+      const ans = confirm("do you want to delete the resource? ");
+      if (ans == false) {
+        Navigate("/resources");
+        return;
+      } else {
+        deleteNews();
+        Navigate("/resources");
+        return;
+      }
     }
   });
 

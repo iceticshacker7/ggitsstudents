@@ -8,12 +8,10 @@ const getLeaderboard = () => {
     async function fetchData() {
       try {
         // Assuming your backend is running on http://localhost:5000/
-        const response = await axios.get(
-          "http://localhost:5000/leaderboard/getHandles"
-        );
+        const response = await axios.get("http://localhost:5000/leaderboard");
         setHandles(response.data);
       } catch (error) {
-        console.error("Error fetching handles:", error);
+        console.error("Error fetching leaderboard:", error);
       }
     }
 

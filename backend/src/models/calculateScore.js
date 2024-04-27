@@ -2,9 +2,6 @@ const axios = require("axios");
 const { mainRating } = require("../models/db2.model");
 const cheerio = require("cheerio");
 
-
-
-
 async function codeforces(handler) {
   const handle = handler;
 

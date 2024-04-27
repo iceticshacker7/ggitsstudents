@@ -5,11 +5,12 @@ import getLeaderboard from "../utils/getLeaderboard";
 import Shimmerui from "./sidecomponents/Shimmerui";
 import getUserData from "../utils/getUserData";
 import { Button } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 function MainBody() {
   const [shimdata, setShimData] = useState([]);
-  const data = getLeaderboard();
-  const user = getUserData();
+  const user = getUserData([]);
+  const data = getLeaderboard([]);
 
   useEffect(() => {
     setShimData(data); // This will log the previous state, not the updated one
@@ -26,9 +27,11 @@ function MainBody() {
           <div className="space-y-6" data-id="23">
             {user.role == "admin" || user.role == "leaderboard" ? (
               <div className="flex justify-end  mb-4 mr-64">
-                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                  New Person
-                </button>
+                <Link to={"/leaderboardpost"}>
+                  <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    New Person
+                  </button>
+                </Link>
               </div>
             ) : null}
             <div className="space-y-2 text-center" data-id="24">
@@ -64,12 +67,16 @@ function MainBody() {
                     />
                     {user.role == "admin" || user.role == "leaderboard" ? (
                       <div className="flex justify-end">
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
-                          Edit
-                        </button>
-                        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                          Delete
-                        </button>
+                        <Link to={"/leaderboardedit/" + ldata._id}>
+                          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+                            Edit
+                          </button>
+                        </Link>
+                        <Link to={"/leaderboarddelete/" + ldata._id}>
+                          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                            Delete
+                          </button>
+                        </Link>
                       </div>
                     ) : (
                       <Button></Button>
