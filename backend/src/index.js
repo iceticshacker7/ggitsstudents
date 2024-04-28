@@ -11,7 +11,7 @@ const auth = require("./middleware/auth.js");
 require("./db/Connection.js");
 
 const corsOptionss = {
-  origin: "https://ggits-coding-club.vercel.app/",
+  origin: "*",
   methods: "GET, POST, PUT, DELETE, HEAD",
   credentials: true,
   optionSuccessStatus: 200,
