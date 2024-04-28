@@ -64,6 +64,7 @@ async function runAndUpdateRankings() {
 
     console.log("Rankings updated successfully!");
   } catch (error) {
+    console.log(error);
     console.error("Error updating rankings:", error.message);
   }
 }

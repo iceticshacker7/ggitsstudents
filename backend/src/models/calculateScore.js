@@ -361,7 +361,6 @@ async function runCalculations(handles) {
       ) {
         const handler = links.gfg.split("/")[4];
         const gs = await gfgScore(handler);
-        gs = parseInt(gs);
         score += parseInt(gs) / 1.3;
       }
       // if (p != 0) console.log(rating);

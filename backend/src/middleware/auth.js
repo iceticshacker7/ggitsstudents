@@ -14,7 +14,7 @@ const auth = async (req, res, next) => {
       next();
     } else {
       console.log("user not verified");
-      res.status(401).send({ data: "user not verified",verifyUser,token });
+      res.status(401).send({ data: "user not verified" });
     }
   } catch (error) {
     console.log(error);
