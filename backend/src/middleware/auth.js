@@ -13,6 +13,7 @@ const auth = async (req, res, next) => {
       console.log("user verified ");
       next();
     } else {
+      const verifyUser = jwt.verify(token, process.env.SECRET_KEY);
       console.log("user not verified");
       res.status(401).send({ data: "user not verified",verifyUser,token });
     }
