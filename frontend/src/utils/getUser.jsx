@@ -16,7 +16,7 @@ const getUsers = () => {
 
   const getNews = async () => {
     try {
-      const data = await api.get("http://localhost:3000/admin");
+      const data = await api.get("https://ggitsstudentsapi.vercel.app/admin");
       setUsers([...data.data]);
     } catch (error) {
       console.log(error);

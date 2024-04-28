@@ -19,7 +19,7 @@ const NewsDelete = () => {
   const getUserData = async () => {
     console.log("getuserdata");
     try {
-      const data = await api.get("http://localhost:3000/login");
+      const data = await api.get("https://ggitsstudentsapi.vercel.app/login");
       if (data.data.role == "admin" || data.data.role == "news") {
         setUser(data.data.role);
       } else {
@@ -51,7 +51,7 @@ const NewsDelete = () => {
 
   const deleteNews = async () => {
     api
-      .delete("http://localhost:3000/news/" + newsid)
+      .delete("https://ggitsstudentsapi.vercel.app/news/" + newsid)
       .then((response) => {
         if (response.status == 200) {
           alert("News Deleted Successfully!");

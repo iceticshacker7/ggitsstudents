@@ -17,7 +17,7 @@ const Login = () => {
       },
     });
     api
-      .post("http://localhost:3000/login", {
+      .post("https://ggitsstudentsapi.vercel.app/login", {
         username,
         password,
       })

@@ -15,7 +15,7 @@ const getUserData = () => {
 
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:3000/login");
+      const data = await api.get("https://ggitsstudentsapi.vercel.app/login");
       setUser(data.data);
     } catch (error) {
       return;

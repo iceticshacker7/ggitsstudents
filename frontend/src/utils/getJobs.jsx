@@ -16,7 +16,7 @@ const getJobs = () => {
 
   const getJobs = async () => {
     try {
-      const data = await api.get("http://localhost:3000/jobs");
+      const data = await api.get("https://ggitsstudentsapi.vercel.app/jobs");
       setJobs([...data.data]);
     } catch (error) {
       console.log(error);

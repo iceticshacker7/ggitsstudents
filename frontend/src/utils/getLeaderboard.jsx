@@ -7,8 +7,8 @@ const getLeaderboard = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        // Assuming your backend is running on http://localhost:3000/
-        const response = await axios.get("http://localhost:3000/leaderboard");
+        // Assuming your backend is running on https://ggitsstudentsapi.vercel.app/
+        const response = await axios.get("https://ggitsstudentsapi.vercel.app/leaderboard");
         setHandles(response.data);
       } catch (error) {
         console.error("Error fetching leaderboard:", error);

@@ -19,7 +19,7 @@ const ResourcesEdit = () => {
 
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:3000/login");
+      const data = await api.get("https://ggitsstudentsapi.vercel.app/login");
       if (data.data.role == "admin" || data.data.role == "resources") {
         setUser(data.data.role);
         return;
@@ -36,7 +36,7 @@ const ResourcesEdit = () => {
   };
 
   const getFilteredData = async () => {
-    const datas = await axios.get("http://localhost:3000/resources/");
+    const datas = await axios.get("https://ggitsstudentsapi.vercel.app/resources/");
     datas.data.map((data) => {
       if (data._id == resourceid) {
         setFilteredData(data);
@@ -57,7 +57,7 @@ const ResourcesEdit = () => {
     const tag = e.target.tag.value;
     const link = e.target.link.value;
     api
-      .put("http://localhost:3000/resources/" + resourceid, {
+      .put("https://ggitsstudentsapi.vercel.app/resources/" + resourceid, {
         title,
         description,
         moredescription,

@@ -19,7 +19,7 @@ const Admindelete = () => {
   const getUserData = async () => {
     console.log("getuserdata");
     try {
-      const data = await api.get("http://localhost:3000/login");
+      const data = await api.get("https://ggitsstudentsapi.vercel.app/login");
       if (data.data.role == "admin") {
         setUser(data.data.role);
       } else {
@@ -51,7 +51,7 @@ const Admindelete = () => {
 
   const deleteUser = async () => {
     api
-      .delete("http://localhost:3000/admin/" + userid)
+      .delete("https://ggitsstudentsapi.vercel.app/admin/" + userid)
       .then((response) => {
         console.log(response);
         if (response.status == 200) {

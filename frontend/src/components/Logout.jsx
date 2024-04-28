@@ -9,7 +9,7 @@ const Logout = () => {
   const Navigate = useNavigate();
   const verifyUser = async () => {
     try {
-      const data = await axios.get("http://localhost:3000/login", {
+      const data = await axios.get("https://ggitsstudentsapi.vercel.app/login", {
         withCredentials: true,
       });
       if (data.status == 200) {
@@ -26,7 +26,7 @@ const Logout = () => {
   };
   const logoutUser = async () => {
     try {
-      const data = await axios.get("http://localhost:3000/login/logout", {
+      const data = await axios.get("https://ggitsstudentsapi.vercel.app/login/logout", {
         withCredentials: true,
       });
       if (data.status == 200) {

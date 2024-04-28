@@ -18,7 +18,7 @@ const JobsDelete = () => {
   });
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:3000/login");
+      const data = await api.get("https://ggitsstudentsapi.vercel.app/login");
       if (data.data.role == "admin" || data.data.role == "jobs") {
         setUser(data.data.role);
       } else {
@@ -50,7 +50,7 @@ const JobsDelete = () => {
 
   const deleteJob = async () => {
     api
-      .delete("http://localhost:3000/jobs/" + jobid)
+      .delete("https://ggitsstudentsapi.vercel.app/jobs/" + jobid)
       .then((response) => {
         console.log(response);
         if (response.status == 200) {

@@ -16,7 +16,7 @@ const getResources = () => {
 
   const getResources = async () => {
     try {
-      const data = await api.get("http://localhost:3000/resources");
+      const data = await api.get("https://ggitsstudentsapi.vercel.app/resources");
       setResources([...data.data]);
     } catch (error) {
       console.log(error);

@@ -18,7 +18,7 @@ const Admin = () => {
   });
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:3000/login");
+      const data = await api.get("https://ggitsstudentsapi.vercel.app/login");
       if (data.data.role == "admin") {
         setAdmin(data.data);
       } else {

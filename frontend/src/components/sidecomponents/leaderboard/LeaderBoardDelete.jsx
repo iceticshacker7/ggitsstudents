@@ -18,7 +18,7 @@ const LeaderBoardDelete = () => {
   });
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:3000/login");
+      const data = await api.get("https://ggitsstudentsapi.vercel.app/login");
       if (data.data.role == "admin" || data.data.role == "leaderboard") {
         setUser(data.data.role);
       } else {
@@ -51,7 +51,7 @@ const LeaderBoardDelete = () => {
 
   const deleteNews = async () => {
     api
-      .delete("http://localhost:3000/leaderboard/" + personid)
+      .delete("https://ggitsstudentsapi.vercel.app/leaderboard/" + personid)
       .then((response) => {
         console.log(response);
         if (response.status == 200) {

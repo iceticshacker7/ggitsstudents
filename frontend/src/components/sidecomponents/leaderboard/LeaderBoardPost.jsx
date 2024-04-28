@@ -15,7 +15,7 @@ const LeaderBoardPost = () => {
   });
   const getUserData = async () => {
     try {
-      const data = await api.get("http://localhost:3000/login");
+      const data = await api.get("https://ggitsstudentsapi.vercel.app/login");
       if (data.data.role == "admin" || data.data.role == "leaderboard") {
         setUser(data.data.role);
       } else {
@@ -44,7 +44,7 @@ const LeaderBoardPost = () => {
     const CodeforcesLink = e.target.CodeforcesLink.value;
     const GFGLink = e.target.GFGLink.value;
     api
-      .post("http://localhost:3000/leaderboard", {
+      .post("https://ggitsstudentsapi.vercel.app/leaderboard", {
         Name,
         Branch,
         Batch,
