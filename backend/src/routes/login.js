@@ -41,9 +41,10 @@ router.get("/logout", auth, async (req, res) => {
     const token = req.cookies.jwt;
     if (token) {
       req.user.tokens = [];
-      res.clearCookie("jwt", token,{
+      res.cookie("jwt", "", {
         domain: ".ggitsstudentsapi.vercel.app", 
         path: "/", 
+        expires: new Date(0),
         httpOnly: true, 
         secure: true, 
         sameSite: "none"
