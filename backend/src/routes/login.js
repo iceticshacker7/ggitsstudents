@@ -37,20 +37,24 @@ router.post("/", async (req, res) => {
 
 router.get("/logout", auth, async (req, res) => {
   try {
-    console.log("dkfsa");
     const token = req.cookies.jwt;
     if (token) {
       req.user.tokens = [];
       res.clearCookie("jwt", {
-        domain: "ggitsstudentsapi.vercel.app",
-        path: "/"
+        domain: ".ggitsstudentsapi.vercel.app", 
+        path: "/", 
+        httpOnly: true, 
+        secure: true, 
+        sameSite: "none"
       });
       await req.user.save();
-      res.status(200).send("logout successfull");
+      res.status(200).send("Logout successful");
+    } else {
+      res.status(401).send("User not logged in.");
     }
   } catch (error) {
-    console.log("user not logged in");
-    res.status(401).send("User not logged in.");
+    console.error("Error occurred during logout:", error);
+    res.status(500).send("Internal Server Error");
   }
 });
 
