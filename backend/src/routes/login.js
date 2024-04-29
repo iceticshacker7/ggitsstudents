@@ -23,6 +23,7 @@ router.post("/", async (req, res) => {
 
       res.cookie("jwt", token, {
         expires: new Date(Date.now() + 3000000),
+        httpOnly: true,
         secure:true,
         sameSite:'none'
       });
