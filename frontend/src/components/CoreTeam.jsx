@@ -14,7 +14,7 @@ const CoreTeam = () => {
           <div className="space-y-6">
             <div className="space-y-2 text-center">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"> 
-              <Link to={"/hiddenlogin"}><button className=" cursor-default">Core Team </button></Link>
+              {/* <Link to={"/hiddenlogin"}><button className=" cursor-default">Core Team </button></Link> */}
               </h1>
               <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
               The folks behind the magic. We're a diverse team of professionals who are passionate about creating the best experiences for our users.
