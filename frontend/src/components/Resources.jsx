@@ -17,7 +17,7 @@ const Resources = () => {
       <div className="container bg-gray-100 flex justify-center h-full py-6 md:py-10 lg:py-14">
         <div className="mx-auto max-w-[76rem]">
           <div className="space-y-6">
-            {user.role == "admin" || user.role == "resource" ? (
+            {user.role == "admin" || user.role == "resources" ? (
               <Link to="/resourcespost">
                 <div className="flex justify-end mb-4">
                   <Button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2  px-4 rounded ml-auto">
