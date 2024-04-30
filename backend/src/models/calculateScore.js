@@ -296,7 +296,7 @@ async function runCalculations(handles) {
 
         const codechefScore = await codechef(handler);
         if (codechefScore.rating != 0 && codechefScore.rating != undefined) {
-          score += (codechefScore.rating / 1000) * codechefScore.sum * 2;
+          score += (codechefScore.rating / 500) * codechefScore.sum;
           rating += parseFloat(codechefScore.rating);
           p++;
         }

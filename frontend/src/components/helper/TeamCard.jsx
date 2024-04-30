@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const TeamCard = ({ profiles }) => {
   return (
     <>
-      <section className="w-full py-12 md:py-24 lg:py-32">
+      <section className="w-full py-12 md:py-24 lg:py-16">
         <div className="container grid grid-cols-1 gap-8 px-4 md:grid-cols-2 lg:grid-cols-3 md:px-6">
           {profiles.map((profile, index) => (
             <div key={index} className="flex items-center gap-4">
