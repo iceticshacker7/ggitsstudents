@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const JobComponent = ({ title, description, tag, eligibility, link }) => {
+const JobComponent = ({
+  title,
+  description,
+  tag,
+  eligibility,
+  link,
+  uploadDate,
+}) => {
   return (
     <div className="flex justify-center items-center my-3">
       <div
@@ -9,7 +16,10 @@ const JobComponent = ({ title, description, tag, eligibility, link }) => {
         data-v0-t="card"
       >
         <div className="p-6">
-          <h2 className="text-2xl font-bold leading-tight">{title}</h2>
+          <div className="flex align-middle  justify-between">
+            <h2 className="text-2xl font-bold leading-tight">{title}</h2>
+            <p className="leading-tight  my-1">{uploadDate}</p>
+          </div>
           <div className="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 mt-2">
             Batch: {eligibility}
           </div>
