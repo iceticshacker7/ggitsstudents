@@ -49,14 +49,14 @@ function MainBody() {
               </p>
             </div>
             <div
-              className="mx-auto grid max-w-3xl items-stretch justify-center gap-4"
+              className="mx-auto max-w-2/4 sm:flex sm:flex-col sm:w-1/3 sm:max-w-full  items-stretch justify-center gap-4 "
               data-id="27"
             >
               {!shimdata.length ? (
                 <Shimmerui />
               ) : (
                 shimdata.map((ldata, index) => (
-                  <div key={index} className="w-full">
+                  <div key={index} className="w-full   ">
                     <Component
                       name={ldata.Name}
                       rank={ldata.Rank}

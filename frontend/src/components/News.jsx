@@ -23,7 +23,7 @@ const News = () => {
     <>
       <Header />
       <div className="container bg-gray-100 py-6 h-full max-w-full flex md:py-10 lg:py-14">
-        <div className="mx-auto max-w-[76rem]">
+        <div className="mx-auto  sm:max-w-full">
           <div className="space-y-6">
             {user.role == "admin" || user.role == "news" ? (
               <Link to="/newspost">
@@ -34,7 +34,7 @@ const News = () => {
                 </div>
               </Link>
             ) : null}
-            <div className="space-y-2 ">
+            <div className="space-y-2  ">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center">
                 TECH NEWS AND UPDATES
               </h1>
@@ -45,7 +45,7 @@ const News = () => {
                 <NewsShimmer />
               ) : (
                 shimdata.map((newsItem, index) => (
-                  <div key={index} className="flex flex-col">
+                  <div key={index} className="flex flex-col  ">
                     <div className="w-full">
                       <NewsCard
                         title={newsItem.title}
