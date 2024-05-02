@@ -37,7 +37,7 @@ function Header() {
       </a>
       <nav className="flex-1" data-id="6">
         <ul
-          className=" flex gap-4  text-[11px] justify-center  sm:text-xl  sm:flex sm:gap-4 sm:justify-center  "
+          className=" flex gap-4  text-[11px] justify-center  sm:text-lg  sm:flex sm:gap-4 sm:justify-center  "
           data-id="7"
         >
           <Link to="/leaderboard">

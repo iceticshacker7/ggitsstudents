@@ -10,7 +10,7 @@ const NewsCard = ({ title, description, tag, link, moredescription }) => {
 
   return (
     <div
-      className="rounded-lg shadow-lg sm:bg-white  sm:w-[80vw]  border bg-card text-card-foreground  "
+      className="rounded-lg shadow-lg sm:bg-white  sm:w-[80vw] mx-5 my-3 border bg-card text-card-foreground  "
       data-v0-t="card"
     >
       <div className="flex  items-start p-6">

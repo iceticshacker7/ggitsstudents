@@ -11,7 +11,7 @@ const CoreTeam = () => {
   return (
     <>
       <Header />
-      <div className="container bg-gray-100 max-w-full py-6 h-[100vh] flex md:py-10 lg:py-14">
+      <div className="container bg-gray-100 max-w-full py-6 h-full flex md:py-10 lg:py-14">
         <div className="mx-auto max-w-[76rem]">
           <div className="space-y-6">
             <div className="space-y-2 text-center">
