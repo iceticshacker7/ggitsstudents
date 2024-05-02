@@ -53,6 +53,7 @@ const News = () => {
                         tag={newsItem.tag}
                         link={newsItem.link}
                         moredescription={newsItem.moredescription}
+                        uploadDate={String(newsItem.createdAt).substring(0, 10)}
                       />
                     </div>
                     {user.role === "admin" || user.role === "news" ? (

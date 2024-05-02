@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const NewsCard = ({ title, description, tag, link, moredescription }) => {
+const NewsCard = ({
+  title,
+  description,
+  tag,
+  link,
+  moredescription,
+  uploadDate,
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpansion = () => {
@@ -15,9 +22,12 @@ const NewsCard = ({ title, description, tag, link, moredescription }) => {
     >
       <div className="flex  items-start p-6">
         <div className="grid gap-1 ml-4">
-          <div className="flex items-center gap-2">
-            <hgroup className="grid gap-1">
-              <h3 className="text-base font-bold leading-none">{title}</h3>
+          <div className="flex items-center  gap-2">
+            <hgroup className="flex flex-col w-full">
+              <div className="flex align-middle  justify-between max-w-full ">
+                <h3 className="text-base font-bold leading-none">{title}</h3>
+                <p className="leading-tight  my-1">{uploadDate}</p>
+              </div>
               <h4 className="text-xs tracking-wide opacity-70">{tag}</h4>
             </hgroup>
           </div>
