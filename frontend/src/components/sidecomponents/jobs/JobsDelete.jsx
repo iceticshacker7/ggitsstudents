@@ -52,11 +52,11 @@ const JobsDelete = () => {
     api
       .delete("https://ggitsstudentsapi.vercel.app/jobs/" + jobid)
       .then((response) => {
-        console.log(response);
+        // // console.log(response);
         if (response.status == 200) {
           alert("job Deleted Successfully!");
           Navigate("/jobs");
-          console.log(response);
+          // // console.log(response);
         } else {
           alert("Error while deleting news!");
           Navigate("/jobs");

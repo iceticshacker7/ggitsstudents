@@ -15,7 +15,7 @@ function Header() {
   });
 
   return (
-    <div className="container h-6  w-full flex pt-1 pl-2  justify-center  sm:bg-gray-100 sm:flex sm:max-w-full sm:items-center sm:gap-4 sm:px-4 sm:py-2 md:gap-6 md:px-6">
+    <div className="container h-10  w-full flex pt-1 pl-2  justify-center bg-white sm:flex sm:max-w-full sm:items-center sm:gap-4 sm:px-4 sm:py-2 md:gap-6 md:px-6">
       <a className=" hidden sm:flex gap-2 font-semibold items-center dark:text-black-50">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ function Header() {
       </a>
       <nav className="flex-1" data-id="6">
         <ul
-          className=" flex gap-4  text-[11px] justify-center  sm:text-lg  sm:flex sm:gap-4 sm:justify-center  "
+          className=" flex gap-4  text-[11px] justify-center  my-2 sm:text-lg  sm:flex sm:gap-4 sm:justify-center  "
           data-id="7"
         >
           <Link to="/leaderboard">

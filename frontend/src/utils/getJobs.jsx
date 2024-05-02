@@ -19,8 +19,8 @@ const getJobs = () => {
       const data = await api.get("https://ggitsstudentsapi.vercel.app/jobs");
       setJobs([...data.data]);
     } catch (error) {
-      console.log(error);
-      console.log("error fetching news");
+      // console.log(error);
+      // console.log("error fetching news");
     }
   };
   return jobs;

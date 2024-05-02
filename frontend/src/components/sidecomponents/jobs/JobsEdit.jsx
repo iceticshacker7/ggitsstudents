@@ -64,7 +64,7 @@ const JobsEdit = () => {
         link,
       })
       .then((response) => {
-        console.log(response);
+        // // console.log(response);
         if (response.status == 200) {
           alert("job edited successfully!");
           Navigate("/jobs");

@@ -26,7 +26,9 @@ const NewsCard = ({
             <hgroup className="flex flex-col w-full  ">
               <div className="flex align-middle justify-between  w-full ">
                 <h3 className="text-base font-bold leading-none">{title}</h3>
-                <p className="leading-tight  my-1">{uploadDate}</p>
+                {uploadDate != "undefined" ? (
+                  <p className="leading-tight  my-1">{uploadDate}</p>
+                ) : null}
               </div>
               <h4 className="text-xs tracking-wide opacity-70">{tag}</h4>
             </hgroup>

@@ -11,7 +11,7 @@ export default function Component({
   id,
 }) {
   return (
-    <div className="rounded-lg shadow-lg  sm:max-w-full">
+    <div className="rounded-lg shadow-lg bg-white  sm:max-w-full">
       <div className="p-6 space-y-4 text-center">
         <div className="text-3xl font-semibold">{rank}</div>
         <div className="space-y-2 text-center">

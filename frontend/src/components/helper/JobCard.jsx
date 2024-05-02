@@ -18,7 +18,9 @@ const JobComponent = ({
         <div className="p-6">
           <div className="flex align-middle  justify-between">
             <h2 className="text-2xl font-bold leading-tight">{title}</h2>
-            <p className="leading-tight  my-1">{uploadDate}</p>
+            {uploadDate != "undefined" ? (
+              <p className="leading-tight  my-1">{uploadDate}</p>
+            ) : null}
           </div>
           <div className="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 mt-2">
             Batch: {eligibility}

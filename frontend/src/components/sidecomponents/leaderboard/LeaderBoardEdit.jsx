@@ -72,7 +72,7 @@ const NewsEdit = () => {
       })
       .then((response) => {
         if (response.status == 200) {
-          console.log(response);
+          // console.log(response);
           alert("Person edited successfully!");
           Navigate("/leaderboard");
         } else {
@@ -81,7 +81,7 @@ const NewsEdit = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         if (error.response.status == 401) {
           alert("Access Denied");
           Navigate("/");

@@ -47,5 +47,5 @@ app.use("/login", loginRouter);
 app.use("/leaderboard", leaderboardRouter);
 
 app.listen(port, (req, res) => {
-  console.log(`Server is running at port ${port}`);
+  // console.log(`Server is running at port ${port}`);
 });

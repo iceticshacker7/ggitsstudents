@@ -4,7 +4,7 @@ const JobShimmer = () => {
   return (
     <>
       {Array.from({ length: 50 }, (_, index) => (
-        <div className="flex justify-center items-center my-3">
+        <div className="flex justify-center items-center my-3" key={index}>
           <div
             className="rounded-lg shadow-lg bg-white border bg-card text-card-foreground w-full max-w-lg"
             data-v0-t="card"

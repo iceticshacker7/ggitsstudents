@@ -43,8 +43,8 @@ roleSchema.methods.generateAuthToken = async function () {
     await this.save();
     return token;
   } catch (error) {
-    console.log("Error occured while generating token");
-    console.log(error);
+    // console.log("Error occured while generating token");
+    // console.log(error);
   }
 };
 

@@ -43,7 +43,7 @@ const Adminedit = () => {
         }
       });
     } catch (error) {
-      console.log(error);
+      // // console.log(error);
     }
   };
 
@@ -64,12 +64,12 @@ const Adminedit = () => {
       .then((response) => {
         if (response.status == 200) {
           alert("user edited successfully!");
-          console.log(
-            "new: " +
-              response.data.password +
-              " " +
-              response.data.confirmpassword
-          );
+          // // console.log(
+          //   "new: " +
+          //     response.data.password +
+          //     " " +
+          //     response.data.confirmpassword
+          // );
           Navigate("/admin");
         } else {
           alert("Error occured while editing user data!");
@@ -87,9 +87,9 @@ const Adminedit = () => {
   return (
     <div>
       <Header />
-      {console.log(
+      {/* {// console.log(
         "old: " + fileteredData.password + " " + fileteredData.confirmpassword
-      )}
+      )} */}
       <form className="max-w-sm mx-auto" onSubmit={handleOnSubmit}>
         <div className="mb-5">
           <input

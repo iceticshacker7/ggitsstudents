@@ -24,10 +24,10 @@ router.post("/", auth, async (req, res) => {
       const registered = await newResource.save();
 
       res.sendStatus(200);
-      console.log("resource uploaded successfully");
+      // console.log("resource uploaded successfully");
     } catch (error) {
       res.send("Error while uploading resource");
-      console.log(error);
+      // console.log(error);
     }
   } else {
     res.status(401).send({ data: "permission denied" });
@@ -55,7 +55,7 @@ router.put("/:id", auth, async (req, res) => {
           },
         }
       );
-      console.log("update successful");
+      // console.log("update successful");
       res.send(result);
     } catch (error) {
       response.send("error while updating the data");
@@ -77,9 +77,9 @@ router.delete("/:id", auth, async (req, res) => {
       }
       const result = await addResource.findOneAndDelete({ _id: resourceid });
       res.send(result);
-      console.log("resource Delete successfully!");
+      // console.log("resource Delete successfully!");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   } else {
     res.status(401).send({ data: "permission denied" });

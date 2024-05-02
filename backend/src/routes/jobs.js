@@ -25,10 +25,10 @@ router.post("/", auth, async (req, res) => {
       const registered = await newJobs.save();
 
       res.status(200).send("Job posted successfully");
-      console.log("jobs uploaded successfully");
+      // console.log("jobs uploaded successfully");
     } catch (error) {
       res.send("Error while uploading jobs");
-      console.log(error);
+      // console.log(error);
     }
   } else {
     res.status(401).send({ data: "permission denied" });
@@ -57,7 +57,7 @@ router.put("/:id", auth, async (req, res) => {
           },
         }
       );
-      console.log("update successful");
+      // console.log("update successful");
       res.status(200).send(result);
     } catch (error) {
       response.send("error while updating the data");
@@ -78,9 +78,9 @@ router.delete("/:id", auth, async (req, res) => {
       }
       const result = await addJobs.findOneAndDelete({ _id: jobid });
       res.send(result);
-      console.log("job Delete successfully!");
+      // console.log("job Delete successfully!");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   } else {
     res.status(401).send({ data: "permission denied" });

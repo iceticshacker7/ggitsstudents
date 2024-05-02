@@ -7,8 +7,8 @@ async function updateRanking(id, name, branch, batch, score, rating) {
     const filter = { _id: id, Name: name, Branch: branch, Batch: batch };
     const update = { Score: score, Rating: rating };
 
-    console.log("Filter:", filter);
-    console.log("Update:", update);
+    // console.log("Filter:", filter);
+    // console.log("Update:", update);
 
     // Update the document that matches the filter
     if (await Ranking.findOne({ _id: filter._id })) {
@@ -24,16 +24,16 @@ async function updateRanking(id, name, branch, batch, score, rating) {
           },
         }
       );
-      console.log("Result:", result);
-      console.log(`Successfully updated the ranking for ${name}`);
+      // console.log("Result:", result);
+      // console.log(`Successfully updated the ranking for ${name}`);
     } else {
-      console.log(
-        `No matching document found for ${name}, ${branch}, ${batch}`
-      );
+      // console.log(
+      //   `No matching document found for ${name}, ${branch}, ${batch}`
+      // );
       try {
         // Assuming Ranking is a Mongoose model
         const addOneResult = await Ranking.create({ ...filter, ...update });
-        console.log("Add One Result:", addOneResult);
+        // console.log("Add One Result:", addOneResult);
       } catch (error) {
         console.error(`Error adding document: ${error.message}`);
       }
@@ -48,7 +48,7 @@ async function runAndUpdateRankings() {
     // Assuming runCalculations returns a promise
     const handles = await mainRating.find().lean();
     const calculations = await runCalculations(handles);
-    // console.log("Calculations:", calculations);
+    // // console.log("Calculations:", calculations);
 
     // Use forEach to iterate over the results
     calculations.map(async (Calculate) => {
@@ -62,9 +62,9 @@ async function runAndUpdateRankings() {
       );
     });
 
-    console.log("Rankings updated successfully!");
+    // console.log("Rankings updated successfully!");
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     console.error("Error updating rankings:", error.message);
   }
 }

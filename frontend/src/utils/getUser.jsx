@@ -19,8 +19,8 @@ const getUsers = () => {
       const data = await api.get("https://ggitsstudentsapi.vercel.app/admin");
       setUsers([...data.data]);
     } catch (error) {
-      console.log(error);
-      console.log("error fetching users");
+      // console.log(error);
+      // console.log("error fetching users");
     }
   };
   return users;

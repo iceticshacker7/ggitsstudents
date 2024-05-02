@@ -47,12 +47,12 @@ router.post("/", auth, async (req, res) => {
         const registered = await newRole.save();
 
         res.status(200).send("user created successfully");
-        console.log("admin registered successful");
+        // console.log("admin registered successful");
       } else {
         res.send("Password does not match");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   } else {
     res.status(401).send({ data: "permission denied" });
@@ -83,11 +83,11 @@ router.put("/:id", auth, async (req, res) => {
           },
         }
       );
-      console.log("update successful");
+      // console.log("update successful");
       res.status(200).send(result);
     } catch (error) {
       res.send("error while updating the data");
-      console.log(error);
+      // console.log(error);
     }
   } else {
     res.status(401).send({ data: "permission denied" });
@@ -106,9 +106,9 @@ router.delete("/:id", auth, async (req, res) => {
       }
       const result = await roleRegister.findOneAndDelete({ _id: userid });
       res.status(200).send(result);
-      console.log("User Delete successfully!");
+      // console.log("User Delete successfully!");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   } else {
     res.status(401).send({ data: "permission denied" });

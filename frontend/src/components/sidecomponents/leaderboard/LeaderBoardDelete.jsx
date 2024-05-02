@@ -53,11 +53,11 @@ const LeaderBoardDelete = () => {
     api
       .delete("https://ggitsstudentsapi.vercel.app/leaderboard/" + personid)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.status == 200) {
           alert("Person Deleted Successfully!");
           Navigate("/leaderboard");
-          console.log(response);
+          // console.log(response);
         } else {
           alert("Error while deleting Person!");
           Navigate("/leaderboard");

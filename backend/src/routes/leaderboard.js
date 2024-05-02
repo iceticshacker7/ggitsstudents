@@ -15,7 +15,7 @@ router.get("/getrating", auth, async (req, res) => {
     const result = await mainRating.find();
     res.send(result);
   } else {
-    console.log("Access Denied for accessing");
+    // console.log("Access Denied for accessing");
   }
 });
 
@@ -36,10 +36,10 @@ router.post("/", auth, async (req, res) => {
       await newPerson.save();
       runAndUpdateRankings();
       res.sendStatus(200);
-      console.log("Person added successfully");
+      // console.log("Person added successfully");
     } catch (error) {
       res.send("Error while adding person");
-      console.log(error);
+      // console.log(error);
     }
   } else {
     res.status(401).send({ data: "permission denied" });
@@ -70,11 +70,11 @@ router.put("/:id", auth, async (req, res) => {
           },
         }
       );
-      console.log("update successful");
+      // console.log("update successful");
       runAndUpdateRankings();
       res.send(result);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       res.send("error while updating the data");
     }
   } else {
@@ -95,9 +95,9 @@ router.delete("/:id", auth, async (req, res) => {
       const result = await mainRating.findOneAndDelete({ _id: personid });
       const result2 = await Ranking.findOneAndDelete({ _id: personid });
       res.send(result);
-      console.log("Person Delete successfully!");
+      // console.log("Person Delete successfully!");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   } else {
     res.status(401).send({ data: "permission denied" });

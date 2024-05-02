@@ -8,12 +8,12 @@ function Footer() {
           Made with love by the © Coding Club. All rights reserved.
         </p>
         <div className="flex items-center gap-4 md:gap-2">
-          <a
+          <div
             className="text-[7px] md:text-sm font-medium rounded-md dark:text-gray-50"
             href="#"
           >
             Contact Us
-          </a>
+          </div>
         </div>
       </div>
     </footer>

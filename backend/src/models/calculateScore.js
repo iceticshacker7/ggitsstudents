@@ -71,7 +71,7 @@ async function codeforces(handler) {
     throw error;
   }
 }
-// console.log(handles);
+// // console.log(handles);
 const Calculate = async (id, Name, Branch, Batch, Score, Rating) => {
   return {
     _id: id,
@@ -99,11 +99,11 @@ async function codechef(handler) {
 
     const ps = $(".rating-data-section h3").text().trim();
     const nums = ps.match(/\((\d+)\)/g).map((x) => parseInt(x.slice(1, -1)));
-    let i=0;
+    let i = 0;
     for (let num of nums) {
       sum += num;
       i++;
-      if(i==2)break;
+      if (i == 2) break;
     }
   } catch (error) {
     console.error(`Error in codechef for ${handler}: ${error.message}`);
@@ -266,7 +266,7 @@ async function gfgScore(handle) {
     const overallCodingScore = parseInt(
       $(".scoreCard_head_card_left--score__pC6ZA").first().text().trim()
     );
-    // console.log(overallCodingScore);
+    // // console.log(overallCodingScore);
     return overallCodingScore;
   } catch (error) {
     console.error(
@@ -305,7 +305,7 @@ async function runCalculations(handles) {
         if (score === 0) {
           score += codechefScore.sum;
         }
-        // console.log(score, codechefScore.rating);
+        // // console.log(score, codechefScore.rating);
       }
       if (
         links.leetcode != null &&
@@ -321,7 +321,7 @@ async function runCalculations(handles) {
           p++;
           rating += parseFloat(leetcodeScore.globalRating);
         }
-        // console.log(leetcodeScore.totalSolved);
+        // // console.log(leetcodeScore.totalSolved);
         score +=
           leetcodeScore.easySolved * 1 +
           leetcodeScore.mediumSolved * 4 +
@@ -348,11 +348,11 @@ async function runCalculations(handles) {
       //     p++;
       //     rating += parseFloat(codechefScore.ratingv);
       //   }
-      //   // console.log(codechefScore.cnt);
+      //   // // console.log(codechefScore.cnt);
       //   score += codechefScore.count500_1000*2 + codechefScore.count1000_1200*4 + codechefScore.count1200_1400*5 + codechefScore.count1400_1600*9 + codechefScore.count1600_1900*13 + codechefScore.countAbove1900*15;
-      //   // console.log(score);
+      //   // // console.log(score);
       //   // } else {
-      //   //   // console.log(`User ${handler} has not solved any problems on Codeforces`);
+      //   //   // // console.log(`User ${handler} has not solved any problems on Codeforces`);
       //   // }
       // }
       if (
@@ -365,7 +365,7 @@ async function runCalculations(handles) {
         const gs = await gfgScore(handler);
         score += parseInt(gs) / 1.3;
       }
-      // if (p != 0) console.log(rating);
+      // if (p != 0) // console.log(rating);
       const calculationResult = Calculate(
         handle["_id"],
         handle["Name"],
@@ -374,15 +374,15 @@ async function runCalculations(handles) {
         score,
         rating
       );
-      console.log(
-        `Calculation Result for ${handle["Name"]}:`,
-        calculationResult
-      );
+      // // console.log(
+      //   `Calculation Result for ${handle["Name"]}:`,
+      //   calculationResult
+      // );
 
       return calculationResult;
     })
   );
-  // console.log("All calculations:", calculations);
+  // // console.log("All calculations:", calculations);
 
   return calculations;
 }

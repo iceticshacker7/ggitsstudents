@@ -8,10 +8,12 @@ const getLeaderboard = () => {
     async function fetchData() {
       try {
         // Assuming your backend is running on https://ggitsstudentsapi.vercel.app/
-        const response = await axios.get("https://ggitsstudentsapi.vercel.app/leaderboard");
+        const response = await axios.get(
+          "https://ggitsstudentsapi.vercel.app/leaderboard"
+        );
         setHandles(response.data);
       } catch (error) {
-        console.error("Error fetching leaderboard:", error);
+        // console.error("Error fetching leaderboard:", error);
       }
     }
 
