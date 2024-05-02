@@ -20,10 +20,10 @@ function MainBody() {
     <>
       <Header />
       <div
-        className="container bg-gray-100 py-6 md:py-10 lg:py-14"
+        className="container max-w-full bg-gray-100 py-6  md:py-10 lg:py-14"
         data-id="21"
       >
-        <div className="mx-auto max-w-6xl px-4" data-id="22">
+        <div className="max-w-full  px-4" data-id="22">
           <div className="space-y-6" data-id="23">
             {user.role == "admin" || user.role == "leaderboard" ? (
               <div className="flex justify-end  mb-4 mr-64">
