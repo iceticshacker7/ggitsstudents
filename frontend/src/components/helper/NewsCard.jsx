@@ -20,11 +20,11 @@ const NewsCard = ({
       className="rounded-lg shadow-lg sm:bg-white  sm:w-[80vw] mx-5 my-3 border bg-card text-card-foreground  "
       data-v0-t="card"
     >
-      <div className="flex  items-start p-6">
-        <div className="grid gap-1 ml-4">
-          <div className="flex items-center  gap-2">
-            <hgroup className="flex flex-col w-full">
-              <div className="flex align-middle  justify-between max-w-full ">
+      <div className="flex  items-start  p-6">
+        <div className="grid gap-1 w-full ml-4">
+          <div className="flex items-center max-w-full gap-2">
+            <hgroup className="flex flex-col w-full  ">
+              <div className="flex align-middle justify-between  w-full ">
                 <h3 className="text-base font-bold leading-none">{title}</h3>
                 <p className="leading-tight  my-1">{uploadDate}</p>
               </div>
