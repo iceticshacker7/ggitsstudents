@@ -102,7 +102,7 @@ function Header() {
           </Link>
         </ul>
       </nav>
-      {user != "" ? (
+      {user.data != "user not verified" ? (
         <Link to="/logout">
           <div className="flex items-center gap-4 md:gap-2" data-id="18">
             <a
