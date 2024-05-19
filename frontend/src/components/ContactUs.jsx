@@ -16,7 +16,7 @@ function ContactUs() {
     emailjs
       .sendForm(
         import.meta.env.VITE_SERVICE_ID,
-        import.meta.env.VITE_TEMPLATE_ID,
+        import.meta.env.VITE_TEMPLATE_ID_CONTACT_US,
         e.target,
         import.meta.env.VITE_PUBLIC_KEY
       )
