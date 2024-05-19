@@ -128,7 +128,7 @@ function Header() {
           </Link>
         </ul>
       </nav>
-      {user != null ? (
+      {user && user.role != null ? (
         <Link to="/logout">
           <div className="flex items-center gap-4 md:gap-2" data-id="18">
             <a
