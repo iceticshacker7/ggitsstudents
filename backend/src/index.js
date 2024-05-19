@@ -10,23 +10,22 @@ const port = process.env.PORT || 3000;
 const auth = require("./middleware/auth.js");
 require("./db/Connection.js");
 
-const allowedOrigins = [
-  "https://dpcoding.club",
-  "https://ggits-coding-club.vercel.app",
-];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+const corsOptionss = {
+  origin: "https://www.dpcoding.club",
+  origin: "https://ggits-coding-club.vercel.app",
   methods: "GET, POST, PUT, DELETE, HEAD",
   credentials: true,
-  optionsSuccessStatus: 200,
+  optionSuccessStatus: 200,
 };
+
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://www.dpcoding.club",
+    "https://ggits-coding-club.vercel.app"
+  );
+  next();
+});
 
 app.use(cors(corsOptionss));
 app.use(express.json());
