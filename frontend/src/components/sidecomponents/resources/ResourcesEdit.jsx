@@ -4,11 +4,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../Header";
 import getUserData from "../../../utils/getUserData";
 import getNews from "../../../utils/getNews";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addResources } from "../../../reduxStore/dataSlice";
 
 const ResourcesEdit = () => {
   const Navigate = useNavigate();
   const { resourceid } = useParams();
   const [user, setUser] = useState("");
+  const dispatch = useDispatch();
+  const resources = useSelector((store) => store.datas.resourcesData);
   const [fileteredData, setFilteredData] = useState([]);
   const api = axios.create({
     withCredentials: true,
@@ -24,19 +29,27 @@ const ResourcesEdit = () => {
         setUser(data.data.role);
         return;
       } else {
-        alert("access denied");
+        toast.warn("Access Denied!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
         Navigate("/");
       }
       return;
     } catch (error) {
-      alert("access denied");
+      toast.warn("Access Denied!", {
+        theme: "colored",
+        autoClose: 3000,
+      });
       Navigate("/");
       return;
     }
   };
 
   const getFilteredData = async () => {
-    const datas = await axios.get("https://ggitsstudentsapi.vercel.app/resources/");
+    const datas = await axios.get(
+      "https://ggitsstudentsapi.vercel.app/resources/"
+    );
     datas.data.map((data) => {
       if (data._id == resourceid) {
         setFilteredData(data);
@@ -65,18 +78,42 @@ const ResourcesEdit = () => {
         link,
       })
       .then((response) => {
+        const newdata = {
+          title: title,
+          description: description,
+          moredescription: moredescription,
+          tag: tag,
+          link: link,
+        };
         if (response.status == 200) {
-          alert("resource edited successfully!");
+          toast.success("Resources edited successfully!", {
+            theme: "colored",
+            autoClose: 3000,
+            position: "top-center",
+          });
+          const myArray = [];
+          resources.map((resource) => {
+            if (resource._id == response.data._id) {
+              myArray.push(newdata);
+            } else myArray.push(resource);
+          });
+          dispatch(addResources(myArray));
           Navigate("/resources");
           return;
         } else {
-          alert("Error occured while posting news!");
+          toast.error("Error occured while editing resource!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/resources");
         }
       })
       .catch((error) => {
         if (error.response.status == 401) {
-          alert("Access Denied");
+          toast.warn("Access Denied!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/");
         }
       });
@@ -84,7 +121,6 @@ const ResourcesEdit = () => {
 
   return (
     <div>
-      <Header />
       <form className="max-w-sm mx-auto" onSubmit={handleOnSubmit}>
         <div className="mb-5">
           <input

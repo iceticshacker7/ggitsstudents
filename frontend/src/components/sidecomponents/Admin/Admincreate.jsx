@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../Header";
 import getUserData from "../../../utils/getUserData";
+import { toast } from "react-toastify";
 
 const Admincreate = () => {
   const Navigate = useNavigate();
@@ -19,12 +20,18 @@ const Admincreate = () => {
       if (data.data.role == "admin") {
         setUser(data.data.role);
       } else {
-        alert("access denied");
+        toast.warn("Access Denied!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
         Navigate("/");
       }
       return;
     } catch (error) {
-      alert("access denied");
+      toast.warn("Access Denied!", {
+        theme: "colored",
+        autoClose: 3000,
+      });
       Navigate("/");
       return;
     }
@@ -49,16 +56,26 @@ const Admincreate = () => {
       })
       .then((response) => {
         if (response.status == 200) {
-          alert("user created successfully!");
+          toast.success("User created successfully!", {
+            theme: "colored",
+            autoClose: 3000,
+            position: "top-center",
+          });
           Navigate("/admin");
         } else {
-          alert("Error occured while creating user!");
+          toast.error("Error while creating user!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/admin");
         }
       })
       .catch((error) => {
         if (error.response.status == 401) {
-          alert("Access Denied");
+          toast.warn("Access Denied!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/");
         }
       });
@@ -66,7 +83,6 @@ const Admincreate = () => {
 
   return (
     <div>
-      <Header />
       <form className="max-w-sm mx-auto" onSubmit={handleOnSubmit}>
         <div className="mb-5">
           <input

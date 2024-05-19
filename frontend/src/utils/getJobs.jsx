@@ -1,29 +1,24 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
+import { addJobs } from "../reduxStore/dataSlice";
 
-const getJobs = () => {
-  const [jobs, setJobs] = useState([]);
-  const api = axios.create({
-    withCredentials: true,
-    headers: {
-      "Content-type": "application/json",
-    },
-  });
+const api = axios.create({
+  withCredentials: true,
+  headers: {
+    "Content-type": "application/json",
+  },
+});
 
-  useEffect(() => {
-    getJobs();
-  }, []);
-
-  const getJobs = async () => {
-    try {
-      const data = await api.get("https://ggitsstudentsapi.vercel.app/jobs");
-      setJobs([...data.data]);
-    } catch (error) {
-      // console.log(error);
-      // console.log("error fetching news");
-    }
-  };
-  return jobs;
+const getJobs = async (dispatch) => {
+  try {
+    const data = await api.get("https://ggitsstudentsapi.vercel.app/jobs");
+    // console.log(data.data);
+    dispatch(addJobs(data.data));
+  } catch (error) {
+    console.log(error);
+    console.log("error fetching news");
+  }
 };
 
 export default getJobs;

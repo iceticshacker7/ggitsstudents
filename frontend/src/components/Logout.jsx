@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 import Header from "./Header";
+import { useDispatch } from "react-redux";
+import { removeUser } from "../reduxStore/userSlice";
+import { toast } from "react-toastify";
 
 const Logout = () => {
+  const dispatch = useDispatch();
   const [isVerified, setIsVerified] = useState(false);
   const Navigate = useNavigate();
   const verifyUser = async () => {
@@ -21,7 +24,10 @@ const Logout = () => {
       return;
     } catch (error) {
       if (error.response.status == 401) {
-        alert("User not looged in");
+        toast.error("User not logged in!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
         Navigate("/");
         return;
       }
@@ -36,11 +42,15 @@ const Logout = () => {
         }
       );
       if (data.status == 200) {
-        alert("Logged out seccuessfull");
+        toast.success("Logout successfully!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
+        dispatch(removeUser());
         Navigate("/");
       }
     } catch (error) {
-      // console.log("Error occur while logging out");
+      console.log("Error occur while logging out");
     }
   };
 
@@ -49,13 +59,7 @@ const Logout = () => {
     logoutUser();
   }, []);
 
-  return (
-    <>
-      <Header />
-    </>
-  );
+  return <></>;
 };
-
-//fake comment
 
 export default Logout;

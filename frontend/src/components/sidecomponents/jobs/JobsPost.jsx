@@ -3,9 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../Header";
 import getUserData from "../../../utils/getUserData";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addJobs } from "../../../reduxStore/dataSlice";
 
 const JobsPost = () => {
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
+  const jobs = useSelector((store) => store.datas.jobsData);
   const [user, setUser] = useState("");
   const api = axios.create({
     withCredentials: true,
@@ -19,12 +24,18 @@ const JobsPost = () => {
       if (data.data.role == "admin" || data.data.role == "jobs") {
         setUser(data.data.role);
       } else {
-        alert("access denied");
+        toast.warn("Access Denied!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
         Navigate("/");
       }
       return;
     } catch (error) {
-      alert("access denied");
+      toast.warn("Access Denied!", {
+        theme: "colored",
+        autoClose: 3000,
+      });
       Navigate("/");
       return;
     }
@@ -35,7 +46,6 @@ const JobsPost = () => {
   });
 
   const handleOnSubmit = (e) => {
-    console.log("sfasdsfd");
     e.preventDefault();
     const title = e.target.title.value;
     const description = e.target.description.value;
@@ -51,17 +61,41 @@ const JobsPost = () => {
         link,
       })
       .then((response) => {
+        const newdata = {
+          title: title,
+          description: description,
+          tag: tag,
+          link: link,
+          eligibility: eligibility,
+        };
+        console.log(newdata);
         if (response.status == 200) {
-          alert("job posted successfully!");
+          toast.success("Job posted successfully!", {
+            theme: "colored",
+            autoClose: 3000,
+            position: "top-center",
+          });
+          const myArray = [];
+          jobs.map((jobs) => {
+            myArray.push(jobs);
+          });
+          myArray.unshift(newdata);
+          dispatch(addJobs(myArray));
           Navigate("/jobs");
         } else {
-          alert("Error occured while posting job!");
+          toast.error("Error occured while posting job", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/jobs");
         }
       })
       .catch((error) => {
         if (error.response.status == 401) {
-          alert("Access Denied");
+          toast.warn("Access Denied!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/");
         }
         console.log(error);
@@ -70,7 +104,6 @@ const JobsPost = () => {
 
   return (
     <div>
-      <Header />
       <form className="max-w-sm mx-auto" onSubmit={handleOnSubmit}>
         <div className="mb-5">
           <input

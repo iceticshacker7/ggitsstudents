@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../Navbar";
 import Header from "../../Header";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addResources } from "../../../reduxStore/dataSlice";
 
 const ResourcesDelete = () => {
+  const resources = useSelector((store) => store.datas.resourcesData);
+  const dispatch = useDispatch();
   const Navigate = useNavigate();
   const { resourceid } = useParams();
   const [user, setUser] = useState("");
@@ -17,18 +21,24 @@ const ResourcesDelete = () => {
     },
   });
   const getUserData = async () => {
-    // console.log("getuserdata");
+    console.log("getuserdata");
     try {
       const data = await api.get("https://ggitsstudentsapi.vercel.app/login");
       if (data.data.role == "admin" || data.data.role == "resources") {
         setUser(data.data.role);
       } else {
-        alert("access denied");
+        toast.warn("Access Denied!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
         Navigate("/");
       }
       return;
     } catch (error) {
-      alert("access denied");
+      toast.warn("Access Denied!", {
+        theme: "colored",
+        autoClose: 3000,
+      });
       Navigate("/");
       return;
     }
@@ -37,15 +47,9 @@ const ResourcesDelete = () => {
   useEffect(() => {
     getUserData();
     if (user == "admin" || user == "resources") {
-      const ans = confirm("do you want to delete the resource? ");
-      if (ans == false) {
-        Navigate("/resources");
-        return;
-      } else {
-        deleteNews();
-        Navigate("/resources");
-        return;
-      }
+      deleteNews();
+      Navigate("/resources");
+      return;
     }
   });
 
@@ -54,27 +58,37 @@ const ResourcesDelete = () => {
       .delete("https://ggitsstudentsapi.vercel.app/resources/" + resourceid)
       .then((response) => {
         if (response.status == 200) {
-          alert("Resource Deleted Successfully!");
+          toast.success("Resource deleted succesfully!", {
+            theme: "colored",
+            autoClose: 3000,
+            position: "top-center",
+          });
+          const myArray = [];
+          resources.map((resource) => {
+            if (resource._id != response.data._id) myArray.push(resource);
+          });
+          dispatch(addResources(myArray));
           Navigate("/resources");
-          // console.log(response);
         } else {
-          alert("Error while deleting news!");
+          toast.error("Error occured while deleting resource!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/resources");
         }
       })
       .catch((error) => {
         if (error.response.status == 401) {
-          alert("Access Denied");
+          toast.warn("Access Denied!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/");
         }
       });
   };
 
-  return (
-    <>
-      <Header />
-    </>
-  );
+  return <></>;
 };
 
 export default ResourcesDelete;

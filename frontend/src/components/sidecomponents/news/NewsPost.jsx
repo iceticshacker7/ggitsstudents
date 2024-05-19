@@ -3,8 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../Header";
 import getUserData from "../../../utils/getUserData";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addNews } from "../../../reduxStore/dataSlice";
 
 const NewsPost = () => {
+  const news = useSelector((store) => store.datas.newsData);
+  const dispatch = useDispatch();
   const Navigate = useNavigate();
   const [user, setUser] = useState("");
   const api = axios.create({
@@ -19,12 +24,18 @@ const NewsPost = () => {
       if (data.data.role == "admin" || data.data.role == "news") {
         setUser(data.data.role);
       } else {
-        alert("access denied");
+        toast.warn("Access Denied!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
         Navigate("/");
       }
       return;
     } catch (error) {
-      alert("access denied");
+      toast.warn("Access Denied!", {
+        theme: "colored",
+        autoClose: 3000,
+      });
       Navigate("/");
       return;
     }
@@ -50,17 +61,41 @@ const NewsPost = () => {
         moredescription,
       })
       .then((response) => {
+        const newdata = {
+          title: title,
+          description: description,
+          tag: tag,
+          link: link,
+          moredescription: moredescription,
+        };
         if (response.status == 200) {
-          alert("news posted successfully!");
+          toast.success("News posted successfully!", {
+            theme: "colored",
+            autoClose: 3000,
+            position: "top-center",
+          });
+
+          const myArray = [];
+          news.map((news) => {
+            myArray.push(news);
+          });
+          myArray.unshift(newdata);
+          dispatch(addNews(myArray));
           Navigate("/news");
         } else {
-          alert("Error occured while posting news!");
+          toast.error("Error occured while posting news!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/news");
         }
       })
       .catch((error) => {
         if (error.response.status == 401) {
-          alert("Access Denied");
+          toast.warn("Access Denied!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/");
         }
       });
@@ -68,7 +103,6 @@ const NewsPost = () => {
 
   return (
     <div>
-      <Header />
       <form className="max-w-sm mx-auto" onSubmit={handleOnSubmit}>
         <div className="mb-5">
           <input

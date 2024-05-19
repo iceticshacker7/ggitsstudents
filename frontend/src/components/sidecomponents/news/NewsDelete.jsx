@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../Navbar";
 import Header from "../../Header";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addNews } from "../../../reduxStore/dataSlice";
 
 const NewsDelete = () => {
+  const news = useSelector((store) => store.datas.newsData);
+  const dispatch = useDispatch();
   const Navigate = useNavigate();
   const { newsid } = useParams();
   const [user, setUser] = useState("");
@@ -17,18 +21,23 @@ const NewsDelete = () => {
     },
   });
   const getUserData = async () => {
-    // console.log("getuserdata");
     try {
       const data = await api.get("https://ggitsstudentsapi.vercel.app/login");
       if (data.data.role == "admin" || data.data.role == "news") {
         setUser(data.data.role);
       } else {
-        alert("access denied");
+        toast.warn("Access Denied!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
         Navigate("/");
       }
       return;
     } catch (error) {
-      alert("access denied");
+      toast.warn("Access Denied!", {
+        theme: "colored",
+        autoClose: 3000,
+      });
       Navigate("/");
       return;
     }
@@ -37,15 +46,9 @@ const NewsDelete = () => {
   useEffect(() => {
     getUserData();
     if (user == "admin" || user == "news") {
-      const ans = confirm("do you want to delete the news? ");
-      if (ans == false) {
-        Navigate("/news");
-        return;
-      } else {
-        deleteNews();
-        Navigate("/news");
-        return;
-      }
+      deleteNews();
+      Navigate("/news");
+      return;
     }
   });
 
@@ -54,27 +57,38 @@ const NewsDelete = () => {
       .delete("https://ggitsstudentsapi.vercel.app/news/" + newsid)
       .then((response) => {
         if (response.status == 200) {
-          alert("News Deleted Successfully!");
+          toast.success("News deleted successfully!", {
+            theme: "colored",
+            autoClose: 3000,
+            position: "top-center",
+          });
+          const myArray = [];
+          news.map((news) => {
+            if (news._id != response.data._id) myArray.push(news);
+          });
+
+          dispatch(addNews(myArray));
           Navigate("/news");
-          // console.log(response);
         } else {
-          alert("Error while deleting news!");
+          console.log(error);
+          toast.error("Error occured while deleting news!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/news");
         }
       })
       .catch((error) => {
+        console.log(error);
         if (error.response.status == 401) {
-          alert("Access Denied");
+          toast.warn("Access Denied!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/");
         }
       });
   };
-
-  return (
-    <>
-      <Header />
-    </>
-  );
 };
 
 export default NewsDelete;

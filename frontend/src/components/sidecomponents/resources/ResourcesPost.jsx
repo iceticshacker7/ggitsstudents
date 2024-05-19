@@ -3,9 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../Header";
 import getUserData from "../../../utils/getUserData";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addResources } from "../../../reduxStore/dataSlice";
 
 const ResourcesPost = () => {
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
+  const resources = useSelector((store) => store.datas.resourcesData);
   const [user, setUser] = useState("");
   const api = axios.create({
     withCredentials: true,
@@ -19,12 +24,18 @@ const ResourcesPost = () => {
       if (data.data.role == "admin" || data.data.role == "resources") {
         setUser(data.data.role);
       } else {
-        alert("access denied");
+        toast.warn("Access Denied!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
         Navigate("/");
       }
       return;
     } catch (error) {
-      alert("access denied");
+      toast.warn("Access Denied!", {
+        theme: "colored",
+        autoClose: 3000,
+      });
       Navigate("/");
       return;
     }
@@ -50,17 +61,40 @@ const ResourcesPost = () => {
         link,
       })
       .then((response) => {
+        const newdata = {
+          title: title,
+          description: description,
+          moredescription: moredescription,
+          tag: tag,
+          link: link,
+        };
         if (response.status == 200) {
-          alert("resource posted successfully!");
+          toast.success("Resource added successfully!", {
+            theme: "colored",
+            autoClose: 3000,
+            position: "top-center",
+          });
+          const myArray = [];
+          resources.map((resource) => {
+            myArray.push(resource);
+          });
+          myArray.unshift(newdata);
+          dispatch(addResources(myArray));
           Navigate("/resources");
         } else {
-          alert("Error occured while posting resource!");
+          toast.error("Error occured while adding resource!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/resources");
         }
       })
       .catch((error) => {
         if (error.response.status == 401) {
-          alert("Access Denied");
+          toast.warn("Access Denied!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/");
         }
       });
@@ -68,7 +102,6 @@ const ResourcesPost = () => {
 
   return (
     <div>
-      <Header />
       <form className="max-w-sm mx-auto" onSubmit={handleOnSubmit}>
         <div className="mb-5">
           <input

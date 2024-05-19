@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Navbar from "./Navbar";
 import Header from "./Header";
 import getUsers from "../utils/getUser";
 import AdminCard from "./helper/AdminCard";
 import { Button } from "@chakra-ui/react";
+import { toast } from "react-toastify";
 
 const Admin = () => {
   const [admin, setAdmin] = useState("");
@@ -22,12 +22,17 @@ const Admin = () => {
       if (data.data.role == "admin") {
         setAdmin(data.data);
       } else {
-        alert("access denied");
+        toast.warn("Access Denied!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
         Navigate("/");
       }
       return;
     } catch (error) {
-      alert("access denied");
+      toast.warn("Access Denied!", {
+        theme: "colored",
+      });
       Navigate("/");
       return;
     }
@@ -39,7 +44,6 @@ const Admin = () => {
   }, []);
   return (
     <>
-      <Header />
       <div className="container bg-gray-100 py-6 h-full flex md:py-10 lg:py-14">
         <div className="mx-auto max-w-[76rem]">
           <div className="space-y-6">
@@ -65,7 +69,7 @@ const Admin = () => {
                     <AdminCard username={user.username} role={user.role} />
                   </div>
                   {admin.role === "admin" ? (
-                    <div className="flex mt-2 ml-auto ">
+                    <div className="flex justify-end  ml-3 w-full ">
                       <Link to={"/admin/useredit/" + user._id}>
                         <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                           Edit

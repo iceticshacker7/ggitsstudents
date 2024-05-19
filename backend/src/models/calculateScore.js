@@ -309,8 +309,15 @@ async function runCalculations(handles) {
         links.leetcode != "NA" &&
         links.leetcode.trim() != "none"
       ) {
-        const handler = links.leetcode.split("/")[3];
-        const leetcodeScore = await leetcode(handler);
+        str = links.leetcode;
+        if (str.endsWith("/")) {
+          str = str.slice(0, -1);
+        }
+        const lastSlashIndex = str.lastIndexOf("/");
+        if (lastSlashIndex != -1) {
+          str = str.slice(lastSlashIndex + 1);
+        }
+        const leetcodeScore = await leetcode(str);
         if (
           leetcodeScore.globalRating != 0 &&
           leetcodeScore.globalRating != undefined
@@ -360,7 +367,9 @@ async function runCalculations(handles) {
       ) {
         const handler = links.gfg.split("/")[4];
         const gs = await gfgScore(handler);
-        score += parseInt(gs) / 1.3;
+        let cs = 0;
+        cs = parseInt(gs);
+        if (!isNaN(cs)) score += cs / 1.3;
       }
       // if (p != 0) // console.log(rating);
       const calculationResult = Calculate(

@@ -4,12 +4,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../Header";
 import getUserData from "../../../utils/getUserData";
 import getNews from "../../../utils/getNews";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addJobs } from "../../../reduxStore/dataSlice";
 
 const JobsEdit = () => {
   const Navigate = useNavigate();
   const { jobid } = useParams();
   const [user, setUser] = useState("");
   const [fileteredData, setFilteredData] = useState([]);
+  const dispatch = useDispatch();
+  const jobs = useSelector((store) => store.datas.jobsData);
   const api = axios.create({
     withCredentials: true,
     headers: {
@@ -23,12 +28,18 @@ const JobsEdit = () => {
       if (data.data.role == "admin" || data.data.role == "jobs") {
         setUser(data.data.role);
       } else {
-        alert("access denied");
+        toast.warn("Access Denied!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
         Navigate("/");
       }
       return;
     } catch (error) {
-      alert("access denied");
+      toast.warn("Access Denied!", {
+        theme: "colored",
+        autoClose: 3000,
+      });
       Navigate("/");
       return;
     }
@@ -64,18 +75,41 @@ const JobsEdit = () => {
         link,
       })
       .then((response) => {
-        // // console.log(response);
         if (response.status == 200) {
-          alert("job edited successfully!");
+          const newdata = {
+            title: title,
+            description: description,
+            tag: tag,
+            link: link,
+            eligibility: eligibility,
+          };
+          toast.success("Job edited successfully!", {
+            theme: "colored",
+            autoClose: 3000,
+            position: "top-center",
+          });
+          const myArray = [];
+          jobs.map((jobs) => {
+            if (jobs._id == response.data._id) {
+              myArray.push(newdata);
+            } else myArray.push(jobs);
+          });
+          dispatch(addJobs(myArray));
           Navigate("/jobs");
         } else {
-          alert("Error occured while posting job!");
+          toast.error("Error while editing job!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/jobs");
         }
       })
       .catch((error) => {
         if (error.response.status == 401) {
-          alert("Access Denied");
+          toast.warn("Access Denied!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/");
         }
       });
@@ -83,7 +117,6 @@ const JobsEdit = () => {
 
   return (
     <div>
-      <Header />
       <form className="max-w-sm mx-auto" onSubmit={handleOnSubmit}>
         <div className="mb-5">
           <input

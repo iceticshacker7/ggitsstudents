@@ -10,22 +10,29 @@ const port = process.env.PORT || 3000;
 const auth = require("./middleware/auth.js");
 require("./db/Connection.js");
 
-const corsOptionss = {
-  origin: "https://ggits-coding-club.vercel.app",
-  methods: "GET, POST, PUT, DELETE, HEAD",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
+const allowedOrigins = [
+  "https://dpcoding.club",
+  "https://ggits-coding-club.vercel.app",
+];
 
 app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://ggits-coding-club.vercel.app"
-  );
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, DELETE, HEAD"
+    );
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Content-Type, Authorization"
+    );
+  }
   next();
 });
 
-app.use(cors(corsOptionss));
+// app.use(cors(corsOptionss));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));

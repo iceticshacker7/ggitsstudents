@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../Navbar";
 import Header from "../../Header";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const LeaderBoardDelete = () => {
   const Navigate = useNavigate();
@@ -22,13 +22,19 @@ const LeaderBoardDelete = () => {
       if (data.data.role == "admin" || data.data.role == "leaderboard") {
         setUser(data.data.role);
       } else {
-        alert("access denied");
+        toast.warn("Access Denied!", {
+          theme: "colored",
+          autoClose: 3000,
+        });
         Navigate("/");
         return;
       }
       return;
     } catch (error) {
-      alert("access denied");
+      toast.warn("Access Denied!", {
+        theme: "colored",
+        autoClose: 3000,
+      });
       Navigate("/");
       return;
     }
@@ -53,29 +59,35 @@ const LeaderBoardDelete = () => {
     api
       .delete("https://ggitsstudentsapi.vercel.app/leaderboard/" + personid)
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         if (response.status == 200) {
-          alert("Person Deleted Successfully!");
+          toast.success("Person deleted successfully!", {
+            theme: "colored",
+            autoClose: 3000,
+            position: "top-center",
+          });
           Navigate("/leaderboard");
-          // console.log(response);
+          console.log(response);
         } else {
-          alert("Error while deleting Person!");
+          toast.error("Error while deleting Person!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/leaderboard");
         }
       })
       .catch((error) => {
         if (error.response.status == 401) {
-          alert("Access Denied");
+          toast.warn("Access Denied!", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           Navigate("/");
         }
       });
   };
 
-  return (
-    <>
-      <Header />
-    </>
-  );
+  return <></>;
 };
 
 export default LeaderBoardDelete;

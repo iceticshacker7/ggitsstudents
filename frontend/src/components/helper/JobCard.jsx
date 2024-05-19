@@ -10,25 +10,23 @@ const JobComponent = ({
   uploadDate,
 }) => {
   return (
-    <div className="flex justify-center items-center my-3">
+    <div className="flex justify-center items-center mt-6">
       <div
-        className="rounded-lg shadow-lg bg-white border bg-card text-card-foreground  w-full max-w-lg"
+        className="rounded-lg shadow-lg   bg-white border bg-card text-card-foreground  w-full max-w-lg"
         data-v0-t="card"
       >
-        <div className="p-6">
+        <div className="p-6 ">
           <div className="flex align-middle  justify-between">
             <h2 className="text-2xl font-bold leading-tight">{title}</h2>
-            {uploadDate != "undefined" ? (
-              <p className="leading-tight  my-1">{uploadDate}</p>
-            ) : null}
+            <p className="leading-tight  my-1">{uploadDate}</p>
           </div>
           <div className="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 mt-2">
             Batch: {eligibility}
           </div>
           <div className="mt-4">
-            <h3 className="font-semibold text-lg">Skillset Required:</h3>
+            <h3 className="font-semibold text-lg ">Skillset Required:</h3>
             <div className="flex flex-wrap gap-2 mt-2">
-              <div className="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80">
+              <div className="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-wrap text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80">
                 {tag}
               </div>
               {/* Add more skillset divs as needed */}
@@ -40,7 +38,7 @@ const JobComponent = ({
           </div>
 
           <div className="flex justify-between items-center mt-6">
-            <Link to={link}>
+            <Link to={link} target="_blank">
               <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2">
                 Apply Now
               </button>
