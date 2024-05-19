@@ -11,19 +11,22 @@ const auth = require("./middleware/auth.js");
 require("./db/Connection.js");
 
 const corsOptionss = {
-  origin: "https://www.dpcoding.club",
   origin: "https://ggits-coding-club.vercel.app",
+  origin: "https://www.dpcoding.club",
   methods: "GET, POST, PUT, DELETE, HEAD",
   credentials: true,
   optionSuccessStatus: 200,
 };
 
+const allowedOrigins = [
+  "https://dpcoding.club",
+  "https://ggits-coding-club.vercel.app",
+];
 app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://www.dpcoding.club",
-    "https://ggits-coding-club.vercel.app"
-  );
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
   next();
 });
 
