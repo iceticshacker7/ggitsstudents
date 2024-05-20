@@ -103,67 +103,101 @@ const JobsPost = () => {
   };
 
   return (
-    <div>
-      <form className="max-w-sm mx-auto" onSubmit={handleOnSubmit}>
-        <div className="mb-5">
-          <input
-            type="text"
-            id="title"
-            name="title"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter your Title"
-            required
-          />
+    <div className="flex justify-center">
+      <div className="relative w-full h-[86vh] max-w-lg rounded-lg my-3 bg-slate-300 p-6 shadow-lg sm:p-5">
+        <div className="flex justify-center font-bold text-xl">
+          <h1 className="underline">JOB POST</h1>
         </div>
-        <div className="mb-5">
-          <textarea
-            rows={5}
-            type="text"
-            name="description"
-            id="desciption"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter your desciption"
-            required
-          />
-        </div>
-        <div className="mb-5">
-          <input
-            type="text"
-            id="tag"
-            name="tag"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter your tag"
-            required
-          />
-        </div>
-        <div className="mb-5">
-          <input
-            type="text"
-            id="eligibility"
-            name="eligibility"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter eligible batch"
-            required
-          />
-        </div>
-        <div className="mb-5">
-          <input
-            type="text"
-            id="link"
-            name="link"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter your link"
-            required
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        <form
+          className="space-y-4 max-w-sm h-full  mx-auto"
+          onSubmit={handleOnSubmit}
         >
-          POST
-        </button>
-      </form>
+          <div className="space-y-4">
+            <div className="space-y-1">
+              <label
+                className="text-sm font-medium leading-none"
+                htmlFor="title"
+              >
+                Title <span className="text-red-500">*</span>
+              </label>
+              <input
+                className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                id="title"
+                name="title"
+                type="text"
+                required
+                placeholder="Enter your Title"
+              />
+            </div>
+            <div className="space-y-1">
+              <label
+                className="text-sm font-medium leading-none"
+                htmlFor="description"
+              >
+                Description <span className="text-red-500">*</span>
+              </label>
+              <textarea
+                className="w-full h-24 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                id="description"
+                name="description"
+                required
+                placeholder="Enter your description"
+              />
+            </div>
+            <div className="space-y-1">
+              <label className="text-sm font-medium leading-none" htmlFor="tag">
+                Tag <span className="text-red-500">*</span>
+              </label>
+              <input
+                className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                id="tag"
+                name="tag"
+                type="text"
+                required
+                placeholder="Enter your tag"
+              />
+            </div>
+            <div className="space-y-1">
+              <label
+                className="text-sm font-medium leading-none"
+                htmlFor="eligibility"
+              >
+                Eligible Batch <span className="text-red-500">*</span>
+              </label>
+              <input
+                className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                id="eligibility"
+                name="eligibility"
+                type="text"
+                required
+                placeholder="Enter eligible batch"
+              />
+            </div>
+            <div className="space-y-1">
+              <label
+                className="text-sm font-medium leading-none"
+                htmlFor="link"
+              >
+                Link <span className="text-red-500">*</span>
+              </label>
+              <input
+                className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                id="link"
+                name="link"
+                type="text"
+                required
+                placeholder="Enter your link"
+              />
+            </div>
+          </div>
+          <button
+            className="w-full h-10 bg-blue-500 text-white rounded-md flex items-center justify-center text-sm font-medium hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            type="submit"
+          >
+            POST
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
