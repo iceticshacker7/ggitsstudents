@@ -6,9 +6,12 @@ import getUsers from "../utils/getUser";
 import AdminCard from "./helper/AdminCard";
 import { Button } from "@chakra-ui/react";
 import { toast } from "react-toastify";
+import { ConfirmPopup } from "primereact/confirmpopup";
 
 const Admin = () => {
   const [admin, setAdmin] = useState("");
+  const [deleteData, setDeleteData] = useState(false);
+  const [userId, setUserId] = useState("");
   const Navigate = useNavigate();
   const api = axios.create({
     withCredentials: true,
@@ -42,6 +45,13 @@ const Admin = () => {
   useEffect(() => {
     getUserData();
   }, []);
+
+  const accept = () => {
+    Navigate("/admin/userdelete/" + userId);
+  };
+  const reject = () => {
+    toast.success("Deletion canceled");
+  };
   return (
     <>
       <div className="container bg-gray-100 py-6 h-full flex md:py-10 lg:py-14">
@@ -75,11 +85,27 @@ const Admin = () => {
                           Edit
                         </Button>
                       </Link>
-                      <Link to={"/admin/userdelete/" + user._id}>
-                        <Button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">
-                          Delete
-                        </Button>
-                      </Link>
+                      <button
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
+                        onClick={() => {
+                          setDeleteData(true);
+                          setUserId(user._id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                      <ConfirmPopup
+                        target={document.getElementById("button")}
+                        visible={deleteData}
+                        onHide={() => setDeleteData(false)}
+                        acceptClassName="bg-red-500 ml-2 p-1 px-3 border-none hover:bg-red-600"
+                        rejectClassName="bg-blue-500 mr-2 p-1 px-3 border-none hover:bg-blue-600"
+                        // className="bg-black text-white"
+                        message="Are you sure you want to this user?"
+                        icon="pi pi-info-circle"
+                        accept={accept}
+                        reject={reject}
+                      />
                     </div>
                   ) : null}
                 </div>

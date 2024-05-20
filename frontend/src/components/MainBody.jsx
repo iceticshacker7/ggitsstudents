@@ -5,17 +5,21 @@ import getLeaderboard from "../utils/getLeaderboard";
 import Shimmerui from "./sidecomponents/Shimmerui";
 import getUserData from "../utils/getUserData";
 import { Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import PerModal from "./PerModal";
+import { ConfirmPopup } from "primereact/confirmpopup";
 
 // import func from "./temp";
 
 function MainBody() {
   // const [shimdata, setShimData] = useState([]);
   const [showRegister, setShowRegister] = useState(false);
+  const [deleteData, setDeleteData] = useState(false);
+  const Navigate = useNavigate();
   const dispatch = useDispatch();
+  const [personId, setPersonId] = useState("");
   const user = useSelector((store) => store.user);
   const data = useSelector((store) => store.datas.leaderboardData);
 
@@ -26,6 +30,14 @@ function MainBody() {
   useEffect(() => {
     !data && getLeaderboard(dispatch);
   }, []);
+
+  const accept = () => {
+    console.log(personId);
+    Navigate("/leaderboarddelete/" + personId);
+  };
+  const reject = () => {
+    toast.success("Deletion canceled");
+  };
 
   return (
     <>
@@ -94,11 +106,27 @@ function MainBody() {
                             Edit
                           </button>
                         </Link>
-                        <Link to={"/leaderboarddelete/" + ldata._id}>
-                          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                            Delete
-                          </button>
-                        </Link>
+                        <button
+                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                          onClick={() => {
+                            setDeleteData(true);
+                            setPersonId(ldata._id);
+                          }}
+                        >
+                          Delete
+                        </button>
+                        <ConfirmPopup
+                          target={document.getElementById("button")}
+                          visible={deleteData}
+                          onHide={() => setDeleteData(false)}
+                          acceptClassName="bg-red-500 ml-2 p-1 px-3 border-none hover:bg-red-600"
+                          rejectClassName="bg-blue-500 mr-2 p-1 px-3 border-none hover:bg-blue-600"
+                          // className="bg-black text-white"
+                          message="Are you sure you want to this Person?"
+                          icon="pi pi-info-circle"
+                          accept={accept}
+                          reject={reject}
+                        />
                       </div>
                     ) : (
                       <Button></Button>

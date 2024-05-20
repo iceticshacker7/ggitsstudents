@@ -41,7 +41,6 @@ const Login = () => {
             autoClose: 3000,
             theme: "colored",
           });
-          alert(`login successfull: ${response.data.role}`);
           navigate("/");
         }
       })

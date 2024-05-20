@@ -43,15 +43,9 @@ const LeaderBoardDelete = () => {
   useEffect(() => {
     getUserData();
     if (user == "admin" || user == "leaderboard") {
-      const ans = confirm("do you want to delete the news? ");
-      if (ans == false) {
-        Navigate("/leaderboard");
-        return;
-      } else {
-        deleteNews();
-        Navigate("/leaderboard");
-        return;
-      }
+      deleteNews();
+      Navigate("/leaderboard");
+      return;
     }
   });
 

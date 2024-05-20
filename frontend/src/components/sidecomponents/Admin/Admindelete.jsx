@@ -42,16 +42,10 @@ const Admindelete = () => {
 
   useEffect(() => {
     getUserData();
-    const ans = confirm("do you want to delete the user? ");
     if (user == "admin") {
-      if (ans == false) {
-        Navigate("/admin");
-        return;
-      } else {
-        deleteUser();
-        Navigate("/admin");
-        return;
-      }
+      deleteUser();
+      Navigate("/admin");
+      return;
     }
   });
 

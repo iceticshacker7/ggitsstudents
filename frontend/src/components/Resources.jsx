@@ -89,7 +89,7 @@ const Resources = () => {
                           onHide={() => setDeleteData(false)}
                           acceptClassName="bg-red-500 ml-2 p-1 px-3 border-none hover:bg-red-600"
                           rejectClassName="bg-blue-500 mr-2 p-1 px-3 border-none hover:bg-blue-600"
-                          message="Are you sure you want to delete this job?"
+                          message="Are you sure you want to delete this resource?"
                           icon="pi pi-info-circle"
                           accept={accept}
                           reject={reject}

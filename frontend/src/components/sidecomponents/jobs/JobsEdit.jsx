@@ -75,8 +75,13 @@ const JobsEdit = () => {
         link,
       })
       .then((response) => {
+        const d = new Date();
+        const month = d.getMonth() + 1;
+        const date = d.getFullYear() + "-0" + month + "-" + d.getDate();
         if (response.status === 200) {
+          console.log(response);
           const newdata = {
+            createdAt: date,
             _id: jobid,
             title,
             description,
@@ -117,9 +122,9 @@ const JobsEdit = () => {
     <div className="flex justify-center">
       <div className="relative w-full h-[87vh] max-w-lg rounded-lg my-1 bg-slate-300 p-3 py-2 shadow-lg ">
         <div className="flex justify-center font-bold text-xl ">
-          <h1 className="underline">EDIT JOB</h1>
+          <h1 className="underline">JOB EDIT</h1>
         </div>
-        <form className="space-y-4 h-full  mx-auto" onSubmit={handleOnSubmit}>
+        <form className="space-y-6 h-full  mx-auto" onSubmit={handleOnSubmit}>
           <div className="space-y-1">
             <label htmlFor="title" className="text-sm font-medium leading-none">
               Title <span className="text-red-500">*</span>

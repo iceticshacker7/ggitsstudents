@@ -14,7 +14,7 @@ const NewsEdit = () => {
   const Navigate = useNavigate();
   const { newsid } = useParams();
   const [user, setUser] = useState("");
-  const [fileteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const api = axios.create({
     withCredentials: true,
     headers: {
@@ -75,8 +75,13 @@ const NewsEdit = () => {
         link,
       })
       .then((response) => {
+        const d = new Date();
+        const month = d.getMonth() + 1;
+        const date = d.getFullYear() + "-0" + month + "-" + d.getDate();
         if (response.status == 200) {
           const newdata = {
+            createdAt: date,
+            _id: newsid,
             title: title,
             description: description,
             tag: tag,
@@ -116,73 +121,95 @@ const NewsEdit = () => {
   };
 
   return (
-    <div>
-      <form className="max-w-sm mx-auto" onSubmit={handleOnSubmit}>
-        <div className="mb-5">
-          <input
-            type="text"
-            id="title"
-            name="title"
-            defaultValue={fileteredData.title}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter your Title"
-            required
-          />
+    <div className="flex justify-center">
+      <div className="relative w-full h-[87vh] max-w-lg rounded-lg my-3 bg-slate-300 px-3 py-2 shadow-lg ">
+        <div className="flex justify-center font-bold text-xl ">
+          <h1 className="underline">NEWS EDIT</h1>
         </div>
-        <div className="mb-5">
-          <textarea
-            rows={5}
-            type="text"
-            name="description"
-            id="desciption"
-            defaultValue={fileteredData.description}
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter your desciption"
-            required
-          />
-        </div>
-        <div className="mb-5">
-          <textarea
-            rows={5}
-            type="text"
-            name="moredescription"
-            id="moredesciption"
-            defaultValue={fileteredData.moredescription}
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter your desciption"
-            required
-          />
-        </div>
-        <div className="mb-5">
-          <input
-            type="text"
-            id="tag"
-            name="tag"
-            defaultValue={fileteredData.tag}
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter your tag"
-            required
-          />
-        </div>
-        <div className="mb-5">
-          <input
-            type="text"
-            id="link"
-            name="link"
-            defaultValue={fileteredData.link}
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter your link"
-            required
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Edit
-        </button>
-      </form>
+        <form className="space-y-3 h-full  mx-auto" onSubmit={handleOnSubmit}>
+          <div className="">
+            <label htmlFor="title" className="text-sm font-medium leading-none">
+              Title <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              defaultValue={filteredData.title}
+              className="w-full h-10 border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 focus:outline-none"
+              placeholder="Enter your Title"
+              required
+            />
+          </div>
+          <div className="">
+            <label
+              htmlFor="description"
+              className="text-sm font-medium leading-none"
+            >
+              Description <span className="text-red-500">*</span>
+            </label>
+            <textarea
+              rows={5}
+              id="description"
+              name="description"
+              defaultValue={filteredData.description}
+              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 focus:outline-none"
+              placeholder="Enter your description"
+              required
+            />
+          </div>
+          <div className="">
+            <label htmlFor="tag" className="text-sm font-medium leading-none">
+              Tag <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="tag"
+              name="tag"
+              defaultValue={filteredData.tag}
+              className="w-full h-10 border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 focus:outline-none"
+              placeholder="Enter your tag"
+              required
+            />
+          </div>
+          <div className="">
+            <label
+              htmlFor="moredescription"
+              className="text-sm font-medium leading-none"
+            >
+              More Description
+            </label>
+            <textarea
+              rows={5}
+              id="moredescription"
+              name="moredescription"
+              defaultValue={filteredData.moredescription}
+              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 focus:outline-none"
+              placeholder="Describe your description"
+            />
+          </div>
+          <div className="">
+            <label htmlFor="link" className="text-sm font-medium leading-none">
+              Link <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="link"
+              name="link"
+              defaultValue={filteredData.link}
+              className="w-full h-10 border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 focus:outline-none"
+              placeholder="Enter your link"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full h-10 bg-blue-500 text-white rounded-md flex items-center justify-center text-sm font-medium hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:outline-none"
+          >
+            EDIT
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
