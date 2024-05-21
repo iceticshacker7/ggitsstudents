@@ -108,7 +108,7 @@ const NewsEdit = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="relative w-full h-[85vh] max-w-lg rounded-lg my-3 bg-slate-300 px-4 py-1 shadow-lg">
+      <div className="relative w-full h-[85vh] max-w-lg rounded-lg my-3 bg-slate-50 px-4 py-1 shadow-lg">
         <div className="flex justify-center font-bold text-xl">
           <h1 className="underline">PERSON EDIT</h1>
         </div>
@@ -122,7 +122,7 @@ const NewsEdit = () => {
               id="Name"
               name="Name"
               defaultValue={fileteredData.Name}
-              className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-10 bg-white border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Enter your Name"
               required
             />
@@ -139,7 +139,7 @@ const NewsEdit = () => {
               id="Branch"
               name="Branch"
               defaultValue={fileteredData.Branch}
-              className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-10 bg-white border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Enter your Branch"
               required
             />
@@ -153,7 +153,7 @@ const NewsEdit = () => {
               id="Batch"
               name="Batch"
               defaultValue={fileteredData.Batch}
-              className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-10 bg-white border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Describe your Batch"
             />
           </div>
@@ -169,7 +169,7 @@ const NewsEdit = () => {
               id="LeetcodeLink"
               name="LeetcodeLink"
               defaultValue={fileteredData.LeetcodeLink}
-              className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-10 bg-white border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Enter your Leetcode Link"
               required
             />
@@ -186,7 +186,7 @@ const NewsEdit = () => {
               id="CodechefLink"
               name="CodechefLink"
               defaultValue={fileteredData.CodechefLink}
-              className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-10 bg-white border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Enter your Codechef Link"
               required
             />
@@ -203,7 +203,7 @@ const NewsEdit = () => {
               id="CodeforcesLink"
               name="CodeforcesLink"
               defaultValue={fileteredData.CodeforcesLink}
-              className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-10 bg-white border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Enter your Codeforces Link"
               required
             />
@@ -220,7 +220,7 @@ const NewsEdit = () => {
               id="GFGLink"
               name="GFGLink"
               defaultValue={fileteredData.GFGLink}
-              className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-10 bg-white border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Enter your GFG Link"
               required
             />

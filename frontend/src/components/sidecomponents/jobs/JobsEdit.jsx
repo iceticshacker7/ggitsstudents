@@ -120,7 +120,7 @@ const JobsEdit = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="relative w-full h-[87vh] max-w-lg rounded-lg my-1 bg-slate-300 p-3 py-2 shadow-lg ">
+      <div className="relative w-full h-[87vh] max-w-lg rounded-lg my-1 bg-slate-50 p-3 py-2 shadow-lg ">
         <div className="flex justify-center font-bold text-xl ">
           <h1 className="underline">JOB EDIT</h1>
         </div>

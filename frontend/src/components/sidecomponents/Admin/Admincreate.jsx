@@ -83,7 +83,7 @@ const Admincreate = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="relative w-full h-[73vh] max-w-lg rounded-lg my-16 bg-slate-300 p-6 shadow-lg sm:p-5">
+      <div className="relative w-full h-[73vh] max-w-lg rounded-lg my-16 bg-slate-50 p-6 shadow-lg sm:p-5">
         <div className="flex justify-center font-bold text-xl">
           <h1 className="underline">NEW ROLE</h1>
         </div>
@@ -100,7 +100,7 @@ const Admincreate = () => {
                 Username <span className="text-red-500">*</span>
               </label>
               <input
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 id="username"
                 name="username"
                 type="text"
@@ -116,15 +116,27 @@ const Admincreate = () => {
                 Role <span className="text-red-500">*</span>
               </label>
               <select
-                className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-black  "
                 id="role"
                 name="role"
                 required
               >
-                <option value="news"> news </option>
-                <option value="jobs"> jobs </option>
-                <option value="leaderboard"> leaderboard </option>
-                <option value="resources"> resources </option>
+                <option value="news" className="text-black">
+                  {" "}
+                  news{" "}
+                </option>
+                <option value="jobs" className="text-black">
+                  {" "}
+                  jobs{" "}
+                </option>
+                <option value="leaderboard" className="text-black">
+                  {" "}
+                  leaderboard{" "}
+                </option>
+                <option value="resources" className="text-black">
+                  {" "}
+                  resources{" "}
+                </option>
               </select>
             </div>
             <div className="space-y-1">
@@ -135,7 +147,7 @@ const Admincreate = () => {
                 Password <span className="text-red-500">*</span>
               </label>
               <input
-                className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 id="password"
                 name="password"
                 type="password"
@@ -151,7 +163,7 @@ const Admincreate = () => {
                 Confirm Password <span className="text-red-500">*</span>
               </label>
               <input
-                className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 id="confirmpassword"
                 name="confirmpassword"
                 type="password"

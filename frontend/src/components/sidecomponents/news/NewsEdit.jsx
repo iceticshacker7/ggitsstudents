@@ -122,7 +122,7 @@ const NewsEdit = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="relative w-full h-[87vh] max-w-lg rounded-lg my-3 bg-slate-300 px-3 py-2 shadow-lg ">
+      <div className="relative w-full h-[87vh] max-w-lg rounded-lg my-3 bg-slate-50 px-3 py-2 shadow-lg ">
         <div className="flex justify-center font-bold text-xl ">
           <h1 className="underline">NEWS EDIT</h1>
         </div>

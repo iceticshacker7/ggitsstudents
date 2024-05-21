@@ -106,7 +106,7 @@ const ResourcesPost = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="relative w-full h-[85vh] max-w-lg rounded-lg my-3 bg-slate-300 px-4 py-4 shadow-lg">
+      <div className="relative w-full h-[85vh] max-w-lg rounded-lg my-3 bg-slate-50 px-4 py-4 shadow-lg">
         <div className="flex justify-center font-bold text-xl">
           <h1 className="underline">RESOURCES POST</h1>
         </div>
@@ -120,7 +120,7 @@ const ResourcesPost = () => {
               id="title"
               name="title"
               required
-              className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-10 bg-white border border-black rounded-md px-3 py-0 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Enter your Title"
             />
           </div>
@@ -136,7 +136,7 @@ const ResourcesPost = () => {
               name="description"
               required
               rows={5}
-              className="w-full h-24 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-24 bg-white border border-black rounded-md px-3 py-2 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Enter your description"
             />
           </div>
@@ -151,7 +151,7 @@ const ResourcesPost = () => {
               id="moredescription"
               name="moredescription"
               rows={5}
-              className="w-full h-24 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-24 bg-white border border-black rounded-md px-3 py-2 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Describe your description"
             />
           </div>
@@ -164,7 +164,7 @@ const ResourcesPost = () => {
               id="tag"
               name="tag"
               required
-              className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-10 bg-white border border-black rounded-md px-3 py-2 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Enter your tag"
             />
           </div>
@@ -177,7 +177,7 @@ const ResourcesPost = () => {
               id="link"
               name="link"
               required
-              className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-10 bg-white border border-black rounded-md px-3 py-2 text-sm placeholder-text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="Enter your link"
             />
           </div>

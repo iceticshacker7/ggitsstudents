@@ -108,7 +108,7 @@ const JobsPost = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="relative w-full h-[86vh] max-w-lg rounded-lg my-3 bg-slate-300 p-6 shadow-lg sm:p-5">
+      <div className="relative w-full h-[86vh] max-w-lg rounded-lg my-3 bg-slate-50 p-6 shadow-lg sm:p-5">
         <div className="flex justify-center font-bold text-xl">
           <h1 className="underline">JOB POST</h1>
         </div>
@@ -125,7 +125,7 @@ const JobsPost = () => {
                 Title <span className="text-red-500">*</span>
               </label>
               <input
-                className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="w-full h-10 bg-white border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 id="title"
                 name="title"
                 type="text"
@@ -141,7 +141,7 @@ const JobsPost = () => {
                 Description <span className="text-red-500">*</span>
               </label>
               <textarea
-                className="w-full h-24 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="w-full h-24 bg-white border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 id="description"
                 name="description"
                 required
@@ -153,7 +153,7 @@ const JobsPost = () => {
                 Tag <span className="text-red-500">*</span>
               </label>
               <input
-                className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="w-full h-10 bg-white border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 id="tag"
                 name="tag"
                 type="text"
@@ -169,7 +169,7 @@ const JobsPost = () => {
                 Eligible Batch <span className="text-red-500">*</span>
               </label>
               <input
-                className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="w-full h-10 bg-white border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 id="eligibility"
                 name="eligibility"
                 type="text"
@@ -185,7 +185,7 @@ const JobsPost = () => {
                 Link <span className="text-red-500">*</span>
               </label>
               <input
-                className="w-full h-10 bg-gray-200 border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="w-full h-10 bg-white border border-black rounded-md px-3 py-2 text-sm placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 id="link"
                 name="link"
                 type="text"

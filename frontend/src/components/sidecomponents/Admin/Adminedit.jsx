@@ -97,7 +97,7 @@ const Adminedit = () => {
 
   return (
     <div className="flex w-full justify-center">
-      <div className="relative w-full h-[45vh] max-w-lg rounded-lg my-40 bg-slate-300 p-10 shadow-lg ">
+      <div className="relative w-full h-[45vh] max-w-lg rounded-lg my-40 bg-slate-50 p-10 shadow-lg ">
         <div className="flex justify-center font-bold text-xl">
           <h1 className="underline">ROLE EDIT</h1>
         </div>
@@ -115,7 +115,7 @@ const Adminedit = () => {
                 id="username"
                 name="username"
                 defaultValue={fileteredData.username}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 "
                 placeholder="Enter username"
                 required
               />
@@ -128,7 +128,7 @@ const Adminedit = () => {
                 Role <span className="text-red-500">*</span>
               </label>
               <select
-                className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 id="role"
                 name="role"
                 required
